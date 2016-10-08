@@ -122,7 +122,9 @@ ALTER SEQUENCE customers_id_seq OWNED BY customers.id;
 CREATE TABLE locations (
     id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    locatable_id integer,
+    locatable_type character varying
 );
 
 
@@ -143,6 +145,37 @@ CREATE SEQUENCE locations_id_seq
 --
 
 ALTER SEQUENCE locations_id_seq OWNED BY locations.id;
+
+
+--
+-- Name: salons; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE salons (
+    id integer NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: salons_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE salons_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: salons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE salons_id_seq OWNED BY salons.id;
 
 
 --
@@ -222,6 +255,13 @@ ALTER TABLE ONLY locations ALTER COLUMN id SET DEFAULT nextval('locations_id_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY salons ALTER COLUMN id SET DEFAULT nextval('salons_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
@@ -255,6 +295,14 @@ ALTER TABLE ONLY customers
 
 ALTER TABLE ONLY locations
     ADD CONSTRAINT locations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: salons_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY salons
+    ADD CONSTRAINT salons_pkey PRIMARY KEY (id);
 
 
 --
@@ -295,6 +343,13 @@ CREATE UNIQUE INDEX index_customers_on_username ON customers USING btree (userna
 
 
 --
+-- Name: index_locations_on_locatable_type_and_locatable_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_locations_on_locatable_type_and_locatable_id ON locations USING btree (locatable_type, locatable_id);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -321,6 +376,6 @@ CREATE UNIQUE INDEX index_users_on_username ON users USING btree (username);
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008150141'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161008180442');
+INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008150141'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161008180442'), ('20161008194131'), ('20161008194427');
 
 
