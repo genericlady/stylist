@@ -14,6 +14,7 @@ gem 'bower-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'faker'
 end
 
 group :development do
