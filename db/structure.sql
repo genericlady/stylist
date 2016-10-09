@@ -39,11 +39,11 @@ SET default_with_oids = false;
 
 CREATE TABLE addresses (
     id integer NOT NULL,
-    line1 character varying NOT NULL,
-    line2 character varying,
-    city character varying NOT NULL,
-    state character varying NOT NULL,
-    zip character varying NOT NULL,
+    line1 character varying(90) NOT NULL,
+    line2 character varying(90),
+    city character varying(90) NOT NULL,
+    state character varying(2) NOT NULL,
+    zip character varying(9) NOT NULL,
     location_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
