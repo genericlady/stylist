@@ -50,39 +50,14 @@ salons.map!.with_index do |salon, index|
   Salon.create!(name: salon, locations: [ locations[index] ])
 end
 
-Salon.create! ({
-       name: ,
-  locations: [ locations[:manhattan] ]
-})
-
-Salon.create!({
-       name: ,
-  locations: [ locations[:brooklyn] ]
-})
-
-Salon.create!({
-       name: ,
-  locations: [ locations[:san_fran] ]
-})
-
-Salon.create!({
-       name: ,
-  locations: [ locations[:chicago] ]
-})
-
-Salon.create!({
-       name: ,
-  locations: [ locations[:los_angeles] ]
-})
-
-# each user should belong to a salon
 350_000.times do |i|
   User.create!(
     first_name: Faker::Name.first_name,
      last_name: Faker::Name.last_name,
+     locations: [ locations[rand(locations.length-1)] ],
       username: "#{Faker::Internet.user_name}#{i}",
       password: Faker::Internet.password(10),
          email: Faker::Internet.user_name + i.to_s +
-                "#{Faker::Internet.domain_name}"
+                "@#{Faker::Internet.domain_name}"
   )
 end
