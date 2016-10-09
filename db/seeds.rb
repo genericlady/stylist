@@ -30,39 +30,52 @@ los_angeles = {
   state: 'CA',
     zip: '90020'
 }
-locations = {
-  los_angeles: Location.create!(address: Address.create!(los_angeles)),
-    manhattan: Location.create!(address: Address.create!(manhattan)),
-     brooklyn: Location.create!(address: Address.create!(brooklyn)),
-     san_fran: Location.create!(address: Address.create!(san_fran)),
-      chicago: Location.create!(address: Address.create!(chicago))
-}
+locations = [
+  Location.create!(address: Address.create!(manhattan)),
+  Location.create!(address: Address.create!(brooklyn)),
+  Location.create!(address: Address.create!(san_fran)),
+  Location.create!(address: Address.create!(chicago)),
+  Location.create!(address: Address.create!(los_angeles))
+]
+
+salons = [
+  'Seagull Haircutters',
+  'Cutler Salon',
+  'Patrick Evan Salon',
+  'XEX',
+  'Etude Lounge'
+]
+
+salons.map!.with_index do |salon, index|
+  Salon.create!(name: salon, locations: [ locations[index] ])
+end
 
 Salon.create! ({
-       name: 'Seagull Haircutters',
+       name: ,
   locations: [ locations[:manhattan] ]
 })
 
 Salon.create!({
-       name: 'Cutler Salon',
+       name: ,
   locations: [ locations[:brooklyn] ]
 })
 
 Salon.create!({
-       name: 'Patrick Evan Salon',
+       name: ,
   locations: [ locations[:san_fran] ]
 })
 
 Salon.create!({
-       name: 'XEX',
+       name: ,
   locations: [ locations[:chicago] ]
 })
 
 Salon.create!({
-       name: 'Etude Lounge',
+       name: ,
   locations: [ locations[:los_angeles] ]
 })
 
+# each user should belong to a salon
 350_000.times do |i|
   User.create!(
     first_name: Faker::Name.first_name,
