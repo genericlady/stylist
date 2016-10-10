@@ -34,42 +34,6 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: addresses; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE addresses (
-    id integer NOT NULL,
-    line1 character varying(90) NOT NULL,
-    line2 character varying(90),
-    city character varying(90) NOT NULL,
-    state character varying(2) NOT NULL,
-    zip character varying(9) NOT NULL,
-    location_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: addresses_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE addresses_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: addresses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE addresses_id_seq OWNED BY addresses.id;
-
-
---
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -87,6 +51,12 @@ CREATE TABLE ar_internal_metadata (
 
 CREATE TABLE locations (
     id integer NOT NULL,
+    location_id integer,
+    address1 character varying(90) NOT NULL,
+    address2 character varying(90),
+    city character varying(90) NOT NULL,
+    state character varying(2) NOT NULL,
+    zip character varying(9) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     locatable_id integer,
@@ -111,37 +81,6 @@ CREATE SEQUENCE locations_id_seq
 --
 
 ALTER SEQUENCE locations_id_seq OWNED BY locations.id;
-
-
---
--- Name: salons; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE salons (
-    id integer NOT NULL,
-    name character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: salons_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE salons_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: salons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE salons_id_seq OWNED BY salons.id;
 
 
 --
@@ -200,13 +139,6 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY addresses ALTER COLUMN id SET DEFAULT nextval('addresses_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY locations ALTER COLUMN id SET DEFAULT nextval('locations_id_seq'::regclass);
 
 
@@ -214,22 +146,7 @@ ALTER TABLE ONLY locations ALTER COLUMN id SET DEFAULT nextval('locations_id_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY salons ALTER COLUMN id SET DEFAULT nextval('salons_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
-
-
---
--- Name: addresses_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY addresses
-    ADD CONSTRAINT addresses_pkey PRIMARY KEY (id);
 
 
 --
@@ -249,14 +166,6 @@ ALTER TABLE ONLY locations
 
 
 --
--- Name: salons_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY salons
-    ADD CONSTRAINT salons_pkey PRIMARY KEY (id);
-
-
---
 -- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -273,17 +182,17 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: index_addresses_on_location_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_addresses_on_location_id ON addresses USING btree (location_id);
-
-
---
 -- Name: index_locations_on_locatable_type_and_locatable_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_locations_on_locatable_type_and_locatable_id ON locations USING btree (locatable_type, locatable_id);
+
+
+--
+-- Name: index_locations_on_location_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_locations_on_location_id ON locations USING btree (location_id);
 
 
 --
@@ -313,6 +222,6 @@ CREATE UNIQUE INDEX index_users_on_username ON users USING btree (username);
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161008180442'), ('20161008194131'), ('20161008194427');
+INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161008194427');
 
 
