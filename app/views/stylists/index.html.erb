@@ -2,58 +2,34 @@
   <h1 class="h2">Stylist Search</h1>
 </header>
 
-<section class="row">
-  <div class="col-lg-6">
-    <div class="input-group">
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </div><!-- /btn-group -->
-      <input type="text" class="form-control" aria-label="...">
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-  <div class="col-lg-6">
-    <div class="input-group">
-      <input type="text" class="form-control" aria-label="...">
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu dropdown-menu-right">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </div><!-- /btn-group -->
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</section><!-- /.row -->
-
-<!-- <section class="search-form">
+<section class="search-form">
   <%= form_for :customers, method: :get do |f| %>
-    <div class="input-group input-group-lg">
-      <%= label_tag :keywords, nil, class: "sr-only" %>
-      <%= text_field_tag :keywords, nil,
-            placeholder: "First Name, Last Name, Address, City, State",
-            class: "form-control input-lg" %>
-      <%= label_tag :near, nil, class: "sr-only" %>
-      <%= text_field_tag :near, nil,
-            placeholder: "New York, NY",
-            class: "form-control input-lg" %>
-      <span class="input-group-btn">
-        <%= submit_tag "Find Customers",
-              class: "btn btn-primary btn-lg" %>
-      </span>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= label_tag :name, nil, class: "sr-only" %>
+        <%= text_field_tag :name, nil,
+              placeholder: "First Name, Last Name",
+              class: "form-control input-lg" %>
+      </div>
     </div>
     
+    <div class="col-sm-5">
+      <div class="form-group">
+        <%= label_tag :near, nil, class: "sr-only" %>
+        <%= text_field_tag :near, nil,
+              placeholder: "New York, NY",
+              class: "form-control input-lg" %>
+      </div>
+    </div>
+    
+    <div class="col-sm-1">
+      <%= submit_tag "Find",
+        class: "btn btn-primary btn-lg" %>
+    </div>
+  </div>
   <% end %>
-</section> -->
+</section>
 
 <section class="search-results">
   <header>
