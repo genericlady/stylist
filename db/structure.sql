@@ -82,40 +82,6 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
--- Name: customers; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE customers (
-    id integer NOT NULL,
-    first_name character varying NOT NULL,
-    last_name character varying NOT NULL,
-    email character varying NOT NULL,
-    username character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: customers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE customers_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: customers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE customers_id_seq OWNED BY customers.id;
-
-
---
 -- Name: locations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -241,13 +207,6 @@ ALTER TABLE ONLY addresses ALTER COLUMN id SET DEFAULT nextval('addresses_id_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY customers ALTER COLUMN id SET DEFAULT nextval('customers_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY locations ALTER COLUMN id SET DEFAULT nextval('locations_id_seq'::regclass);
 
 
@@ -279,14 +238,6 @@ ALTER TABLE ONLY addresses
 
 ALTER TABLE ONLY ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
-
-
---
--- Name: customers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY customers
-    ADD CONSTRAINT customers_pkey PRIMARY KEY (id);
 
 
 --
@@ -329,20 +280,6 @@ CREATE INDEX index_addresses_on_location_id ON addresses USING btree (location_i
 
 
 --
--- Name: index_customers_on_email; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_customers_on_email ON customers USING btree (email);
-
-
---
--- Name: index_customers_on_username; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_customers_on_username ON customers USING btree (username);
-
-
---
 -- Name: index_locations_on_locatable_type_and_locatable_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -376,6 +313,6 @@ CREATE UNIQUE INDEX index_users_on_username ON users USING btree (username);
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008150141'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161008180442'), ('20161008194131'), ('20161008194427');
+INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161008180442'), ('20161008194131'), ('20161008194427');
 
 

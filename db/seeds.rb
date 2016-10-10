@@ -5,8 +5,8 @@ manhattan   = {
     zip: '10014'
 }
 brooklyn    = {
-  line1: 'n 11211',
-  line2: '178 n 8th St',
+  line1: '178 n 8th St',
+  line2: 'n 11211',
    city: 'Brooklyn',
   state: 'NY',
     zip: '11211'
@@ -24,40 +24,50 @@ chicago     = {
     zip: '60601'
 }
 los_angeles = {
-  line1: 'City Center on 6th',
-  line2: '3500 W 6th St #325',
+  line1: '3500 W 6th St #325',
+  line2: 'City Center on 6th',
    city: 'Los Angeles',
   state: 'CA',
     zip: '90020'
 }
-locations = [
-  Location.create!(address: Address.create!(manhattan)),
-  Location.create!(address: Address.create!(brooklyn)),
-  Location.create!(address: Address.create!(san_fran)),
-  Location.create!(address: Address.create!(chicago)),
-  Location.create!(address: Address.create!(los_angeles))
-]
 
-salons = [
-  'Seagull Haircutters',
-  'Cutler Salon',
-  'Patrick Evan Salon',
-  'XEX',
-  'Etude Lounge'
-]
+puts "locations created"
 
-salons.map!.with_index do |salon, index|
-  Salon.create!(name: salon, locations: [ locations[index] ])
-end
+Salon.create!(
+  name: 'Seagull Haircutters',
+  locations: [ Location.create!(address: Address.create!(manhattan)) ]
+)
 
-350_000.times do |i|
+Salon.create!(
+  name: 'Cutler Salon',
+  locations: [ Location.create!(address: Address.create!(brooklyn)) ]
+)
+
+Salon.create!(
+  name: 'Patrick Evan Salon',
+  locations: [ Location.create!(address: Address.create!(san_fran)) ]
+)
+Salon.create!(
+  name: 'XEX',
+  locations: [ Location.create!(address: Address.create!(chicago)) ]
+)
+Salon.create!(
+  name: 'Etude Lounge',
+  locations: [ Location.create!(address: Address.create!(los_angeles)) ]
+)
+
+puts "salons created"
+
+100.times do |i|
   User.create!(
     first_name: Faker::Name.first_name,
      last_name: Faker::Name.last_name,
-     locations: [ locations[rand(locations.length-1)] ],
+     locations: [Location.create!(address: Address.create!(brooklyn))],
       username: "#{Faker::Internet.user_name}#{i}",
       password: Faker::Internet.password(10),
          email: Faker::Internet.user_name + i.to_s +
                 "@#{Faker::Internet.domain_name}"
   )
 end
+
+puts "users created"

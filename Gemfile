@@ -13,6 +13,7 @@ gem 'devise'
 gem 'bower-rails'
 
 group :development, :test do
+  gem 'pry-rails'
   gem 'byebug', platform: :mri
   gem 'faker'
 end
