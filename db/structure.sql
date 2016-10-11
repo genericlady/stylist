@@ -51,16 +51,14 @@ CREATE TABLE ar_internal_metadata (
 
 CREATE TABLE locations (
     id integer NOT NULL,
-    location_id integer,
+    user_id integer,
     address1 character varying(90) NOT NULL,
     address2 character varying(90),
     city character varying(90) NOT NULL,
     state character varying(2) NOT NULL,
     zip character varying(9) NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    locatable_id integer,
-    locatable_type character varying
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -182,17 +180,10 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: index_locations_on_locatable_type_and_locatable_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_locations_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_locations_on_locatable_type_and_locatable_id ON locations USING btree (locatable_type, locatable_id);
-
-
---
--- Name: index_locations_on_location_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_locations_on_location_id ON locations USING btree (location_id);
+CREATE INDEX index_locations_on_user_id ON locations USING btree (user_id);
 
 
 --
@@ -222,6 +213,6 @@ CREATE UNIQUE INDEX index_users_on_username ON users USING btree (username);
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161008194427');
+INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008153747'), ('20161008160549'), ('20161008175606');
 
 

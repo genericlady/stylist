@@ -12,7 +12,7 @@ locations = [
     state: 'NY',
       zip: '11211'
   },
-  san_fran    = {
+  {
     address1: '55 Grant Ave',
      city: 'San Francisco',
     state: 'CA',
@@ -34,15 +34,16 @@ locations = [
 ]
 
 100.times do |i|
-  User.create!(
+  user = User.create!(
     first_name: Faker::Name.first_name,
      last_name: Faker::Name.last_name,
-     locations: [ Location.create!(locations[rand(locations.length-1)]) ],
       username: "#{Faker::Internet.user_name}#{i}",
       password: Faker::Internet.password(10),
          email: Faker::Internet.user_name + i.to_s +
                 "@#{Faker::Internet.domain_name}"
   )
+  user.locations.create(locations[rand(locations.length-1)])
+  user.save
 end
 
 puts "users created"
