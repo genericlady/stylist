@@ -3,12 +3,12 @@
 </header>
 
 <section class="search-form">
-  <%= form_for :customers, method: :get do |f| %>
+  <%= form_for :stylists, method: :get do |f| %>
   <div class="row">
     <div class="col-sm-6">
       <div class="form-group">
-        <%= label_tag :name, nil, class: "sr-only" %>
-        <%= text_field_tag :name, nil,
+        <%= label_tag :stylist, nil, class: "sr-only" %>
+        <%= text_field_tag :stylist, nil,
               placeholder: "First Name, Last Name",
               class: "form-control input-lg" %>
       </div>
