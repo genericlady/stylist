@@ -8,7 +8,7 @@
     <div class="col-sm-6">
       <div class="form-group">
         <%= label_tag :stylist, nil, class: "sr-only" %>
-        <%= text_field_tag :stylist, nil,
+        <%= text_field_tag 'search_terms[stylist]', nil,
               placeholder: "First Name, Last Name",
               class: "form-control input-lg" %>
       </div>
@@ -17,7 +17,7 @@
     <div class="col-sm-5">
       <div class="form-group">
         <%= label_tag :near, nil, class: "sr-only" %>
-        <%= text_field_tag :near, nil,
+        <%= text_field_tag 'search_terms[near]', nil,
               placeholder: "New York, NY",
               class: "form-control input-lg" %>
       </div>
