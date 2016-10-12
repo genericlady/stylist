@@ -208,6 +208,20 @@ CREATE UNIQUE INDEX index_users_on_username ON users USING btree (username);
 
 
 --
+-- Name: locations_lower_city; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX locations_lower_city ON locations USING btree (lower((city)::text) varchar_pattern_ops);
+
+
+--
+-- Name: locations_lower_state; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX locations_lower_state ON locations USING btree (lower((state)::text) varchar_pattern_ops);
+
+
+--
 -- Name: users_lower_first_name; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -227,6 +241,6 @@ CREATE INDEX users_lower_last_name ON users USING btree (lower((last_name)::text
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161011202802');
+INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161011202802'), ('20161012010506');
 
 
