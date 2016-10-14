@@ -1,7 +1,7 @@
 class StylistsController < ApplicationController
   def index
-    if !near_empty?
-      @search_terms = search_terms
+    if params[:search_terms].present?
+      @search_terms = params[:search_terms]
       stylist_search_term = StylistSearchTerm.new(@search_terms)
       @stylists =
         User.joins(:locations)
@@ -11,19 +11,6 @@ class StylistsController < ApplicationController
     else
       @stylists = []
     end
-  end
-  
-  private
-  def search_terms
-    params[:search_terms]
-  end
-  
-  def stylist_empty?
-    search_terms[:stylist].empty?
-  end
-  
-  def near_empty?
-    search_terms[:near].empty?
   end
   
 end
