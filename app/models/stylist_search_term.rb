@@ -4,43 +4,56 @@ class StylistSearchTerm
   def initialize(search_terms)
     @where_clause = ""
     @where_args = {}
-    # handle exception if search_term contains no strings or contains null
+    @location_terms = ""
+    @name_terms     = ""
+
     if !search_terms[:stylist].empty? && !search_terms[:near].empty?
       @location_terms = search_terms[:near]
-      @name_terms     = search_terms[:name]
-      build_name_search 
+      @name_terms     = search_terms[:stylist]
+      build_name_location_search 
     elsif !search_terms[:near].empty?
       @location_terms = search_terms[:near]
       build_location_search
+    elsif !search_terms[:stylist].empty?
+      @name_terms = search_terms[:stylist]
+      build_name_search
     end
   end
   
-  def biuld_name_search
-    
+  private
+  def build_name_search
+    @where_clause << case_insensitive_search(:first_name)
+    @where_args[:first_name] = starts_with(first_name)
+
+    @where_clause << " AND #{case_insensitive_search(:last_name)}"
+    @where_args[:last_name] = starts_with(last_name)
+    @order = "last_name ASC "  
+  end
+  
+  def build_name_location_search
     @where_clause << case_insensitive_search(:city)
     @where_args[:city] = starts_with(city)
 
-    @where_clause << " OR #{case_insensitive_search(:state)}"
+    @where_clause << " AND #{case_insensitive_search(:state)}"
     @where_args[:state] = starts_with(state)
       
-    @where_clause << " OR #{case_insensitive_search(:first_name)}"
+    @where_clause << " AND #{case_insensitive_search(:first_name)}"
     @where_args[:first_name] = starts_with(first_name)
     
-    @where_clause << " OR #{case_insensitive_search(:last_name)}"
+    @where_clause << " AND #{case_insensitive_search(:last_name)}"
     @where_args[:last_name] = starts_with(last_name)
     
     @order = "city = " +
       ActiveRecord::Base.connection.quote(city) +
-      " desc, last_name asc"
+      " asc, last_name asc"
   
   end
   
   def build_location_search
-    
     @where_clause << case_insensitive_search(:city)
     @where_args[:city] = starts_with(city)
 
-    @where_clause << " OR #{case_insensitive_search(:state)}"
+    @where_clause << " AND #{case_insensitive_search(:state)}"
     @where_args[:state] = starts_with(state)
  
     @order = "city = " +
@@ -57,19 +70,28 @@ class StylistSearchTerm
   end
   
   def city
-    @search_terms[:near].split(' ').first
+    @location_terms.split(', ').first
   end
   
   def state
-    @search_terms[:near].split(' ').last
+    if (terms = @location_terms.split(', ')).length > 1
+      terms.last
+    else
+      ""
+    end
   end
   
   def first_name
-    @search_terms[:stylist].split(',').first
+    @name_terms.split(', ').first
   end
   
   def last_name
-    @search_terms[:stylist].split(',').last
+    names = @name_terms.split(', ')
+    if names.length > 1
+      names.last
+    else
+      ""
+    end
   end
 
 end
