@@ -1,4 +1,4 @@
-class StylistSearchTerm
+class StylistSearchSQL
   attr_reader :where_clause, :where_args, :order
   
   def initialize(search_terms)
