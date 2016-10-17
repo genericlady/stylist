@@ -2,10 +2,10 @@ class StylistSearchTerm
   attr_reader :where_clause, :where_args, :order
   
   def initialize(search_terms)
-        @where_args = {}
       @where_clause = ""
+        @where_args = {}
     @location_terms = []
-        @name_terms = ""
+        @name_terms = []
         
     set_location_terms(search_terms)
     set_name_terms(search_terms)
@@ -14,9 +14,9 @@ class StylistSearchTerm
       build_name_city_and_state_search 
     elsif @location_terms.length == 1 && !@name_terms.empty?
       build_name_city_or_state_search
-    elsif !search_terms[:near].empty?
+    elsif @location_terms.length > 0
       build_location_search
-    elsif !search_terms[:stylist].empty?
+    elsif !@name_terms.empty?
       build_name_search
     end
   end
@@ -29,7 +29,7 @@ class StylistSearchTerm
   
   def set_name_terms(search_terms)
     if !search_terms[:stylist].empty?  
-      @name_terms = search_terms[:stylist]  
+      @name_terms = search_terms[:stylist].split(/\s|,+\s/)  
     end
   end
   
@@ -40,6 +40,12 @@ class StylistSearchTerm
   private
   def build_name_search
     @where_clause << case_insensitive_search(:first_name)
+    @where_args[:first_name] = starts_with(first_name)
+
+    @where_clause << " OR #{case_insensitive_search(:last_name)}"
+    @where_args[:last_name] = starts_with(last_name)
+    
+    @where_clause << " OR #{case_insensitive_search(:first_name)}"
     @where_args[:first_name] = starts_with(first_name)
 
     @where_clause << " AND #{case_insensitive_search(:last_name)}"
@@ -120,16 +126,11 @@ class StylistSearchTerm
   end
   
   def first_name
-    @name_terms.split(', ').first
+    @name_terms.first
   end
   
   def last_name
-    names = @name_terms.split(', ')
-    if names.length > 1
-      names.last
-    else
-      ""
-    end
+    @name_terms.last
   end
 
 end
