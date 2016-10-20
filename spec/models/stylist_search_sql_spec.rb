@@ -9,8 +9,9 @@ describe StylistSearchSQL do
   end
   
   it "Can be initialized" do
-    search_terms = { stylist: "foo", near: "new york, NY" }
+    search_terms = { stylist: "Barbra, Foo", near: "new york, NY" }
     stylist_search_sql = StylistSearchSQL.new search_terms
     expect(stylist_search_sql.class).to eq(StylistSearchSQL)
   end
+
 end
