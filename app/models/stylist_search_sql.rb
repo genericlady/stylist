@@ -39,6 +39,7 @@ class StylistSearchSQL
   
   private
   def build_name_search
+		# for each name term build a where clause and where args
     @where_clause << case_insensitive_search(:first_name)
     @where_args[:first_name] = starts_with(first_name)
 
