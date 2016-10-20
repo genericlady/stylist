@@ -35,6 +35,8 @@
   <header>
     <h1 class="h3">Results</h1>
   </header>
+  <%= render partial: "pager", locals: { search_terms: @search_terms, page: @page } %>
+
   <ol class="list-group">
     <% @stylists.each do |stylist| %>
       <li class="list-group-item clearfix">
@@ -48,4 +50,5 @@
       </li>
     <% end %>
   </ol>
+  <%= render partial: "pager", locals: { search_terms: @search_terms, page: @page } %>
 </section>
