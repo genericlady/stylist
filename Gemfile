@@ -13,6 +13,7 @@ gem 'bower-rails'
 
 group :development, :test do
   gem 'pry-rails'
+	gem 'pry-coolline'
   gem 'byebug', platform: :mri
   gem 'faker'
   gem 'rspec-rails', '~> 3.5'
