@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'stylists/index', to: 'stylists#index'
   get 'stylists',       to: 'stylists#index'
+  get 'angular_test',   to: 'angular_test#index'
   
   root 'dashboard#index'
 end
