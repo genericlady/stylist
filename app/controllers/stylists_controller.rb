@@ -13,7 +13,7 @@ class StylistsController < ApplicationController
 
     respond_to do |format|
       format.html {}
-      format.json { render json: @stylists }
+      format.json { render json: @stylists.to_json(include: [:locations]) }
     end
   end
   

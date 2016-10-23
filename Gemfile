@@ -10,7 +10,6 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'bower-rails'
-gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do
   gem 'pry-rails'
