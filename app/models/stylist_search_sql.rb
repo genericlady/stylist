@@ -9,6 +9,7 @@ class StylistSearchSQL
         
     set_location_terms(search_terms)
     set_name_terms(search_terms)
+    binding.pry
     
     if @location_terms.length == 2 && !@name_terms.empty?
       build_name_city_and_state_search 
@@ -64,6 +65,18 @@ class StylistSearchSQL
     @where_clause << " AND #{case_insensitive_search(:last_name)}"
     @where_args[:last_name] = starts_with(last_name)
     
+    @where_clause << " OR #{case_insensitive_search(:city)}"
+    @where_args[:city] = starts_with(city)
+
+    @where_clause << " AND #{case_insensitive_search(:first_name)}"
+    @where_args[:first_name] = starts_with(first_name)
+
+    @where_clause << " OR #{case_insensitive_search(:city)}"
+    @where_args[:city] = starts_with(city)
+
+    @where_clause << " AND #{case_insensitive_search(:last_name)}"
+    @where_args[:last_name] = starts_with(last_name)
+
     @where_clause << " OR #{case_insensitive_search(:state)}"
     @where_args[:state] = starts_with(state)
       
