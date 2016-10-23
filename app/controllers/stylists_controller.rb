@@ -10,6 +10,11 @@ class StylistsController < ApplicationController
     else
       @stylists = []
     end
+
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @stylists }
+    end
   end
   
 end
