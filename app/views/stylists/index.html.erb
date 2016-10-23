@@ -1,4 +1,4 @@
-<article ng-app="stylists" ng-controller="StylistsSearchController">
+<article ng-app="stylists" ng-controller="StylistSearchController">
 
   <header>
     <h1 class="h2">Stylist Search</h1>
@@ -31,13 +31,16 @@
         
         <div class="col-sm-2">
           <button class="btn btn-primary btn-lg"
-                  ng-click="search(search_terms)">
+                  ng-click="search({ search_terms: { stylist: stylist, near: near } })">
             Search
           </button>
         </div>
       </div> <!-- /.row -->
     </form>
   </section>
+  <h1 class="searchedFor" ng-if="searchedFor">
+    <small>Searched for:</small> {{searchedFor}}
+  </h1>
 
   <section class="search-results">
     <header>
@@ -46,17 +49,17 @@
     <%= render partial: "pager", locals: { search_terms: @search_terms, page: @page } %>
 
     <ol class="list-group">
-      <% @stylists.each do |stylist| %>
-        <li class="list-group-item clearfix">
-          <h3 class="pull-right"><small class="text-uppercase">Joined</small>
-            <%= l stylist.created_at.to_date %>
-          </h3>
-          <h2 class="h3">
-            <%= stylist.first_name %> <%= stylist.last_name %>
-          </h2>
-          <h4><%= stylist.locations.first.to_string %></h4>
-        </li>
-      <% end %>
+      <li class="list-group-item clearfix"
+          ng-repeat="stylist in stylists">
+        <h3 class="pull-right">
+          <small class="text-uppercase">Joined</small>
+          {{ stylist.created_at | date }}
+        </h3>
+        <h2 class="h3">
+          {{ stylist.first_name }} {{ stylist.last_name }}
+        </h2>
+        <h4>{{ stylist.locations}}</h4>
+      </li>
     </ol>
     <%= render partial: "pager", locals: { search_terms: @search_terms, page: @page } %>
   </section>
