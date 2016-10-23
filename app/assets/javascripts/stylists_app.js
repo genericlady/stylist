@@ -26,3 +26,16 @@ app.controller("StylistSearchController", [
     };
   }
 ]);
+
+function fullAddress() {
+  return function (location) {
+    return location.address1
+           + " "
+           + location.address2
+           + "  "
+           + location.city
+           + ", "
+           + location.state
+  };
+}
+app.filter('fullAddress', fullAddress);
