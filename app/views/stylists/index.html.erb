@@ -58,7 +58,7 @@
         <h2 class="h3">
           {{ stylist.first_name }} {{ stylist.last_name }}
         </h2>
-        <h4>{{ stylist.locations}}</h4>
+        <h4>{{ stylist.locations[0] | fullAddress }}</h4>
       </li>
     </ol>
     <%= render partial: "pager", locals: { search_terms: @search_terms, page: @page } %>
