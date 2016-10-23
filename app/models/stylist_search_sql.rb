@@ -9,7 +9,6 @@ class StylistSearchSQL
         
     set_location_terms(search_terms)
     set_name_terms(search_terms)
-    binding.pry
     
     if @location_terms.length == 2 && !@name_terms.empty?
       build_name_city_and_state_search 
