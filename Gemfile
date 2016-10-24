@@ -18,6 +18,10 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
+  # START_HIGHLIGHT
+  gem 'poltergeist'
+  # END_HIGHLIGHT
+  gem 'database_cleaner'
 end
 
 group :development do
