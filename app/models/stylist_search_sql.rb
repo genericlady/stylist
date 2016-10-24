@@ -6,7 +6,7 @@ class StylistSearchSQL
         @where_args = {}
     @location_terms = []
         @name_terms = []
-        
+
     set_location_terms(search_terms)
     set_name_terms(search_terms)
     
