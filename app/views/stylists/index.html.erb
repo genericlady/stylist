@@ -14,6 +14,7 @@
                    name="search_terms[stylist]"
                    class="form-control input-lg"
                    placeholder="First Name, Last Name"
+                   ng-change="search({ search_terms: { stylist: stylist, near: near } })"
                    ng-model="stylist"
                    ng-init="stylist = ' '"/>
           </div>
@@ -26,6 +27,7 @@
                    name="search_terms[near]"
                    class="form-control input-lg"
                    placeholder="City, State"
+                   ng-change="search({ search_terms: { stylist: stylist, near: near } })"
                    ng-model="near"
                    ng-init="near = ' '"/>
           </div>
