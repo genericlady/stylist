@@ -6,7 +6,7 @@ class StylistsController < ApplicationController
 
     if params[:search_terms].present?
       @search_terms = params[:search_terms]
-      @stylists = StylistSearch.resolve(@search_terms).limit(PAGE_SIZE)
+      @stylists = StylistSearch.resolve(@search_terms, PAGE_SIZE, @page)
     else
       @stylists = []
     end
