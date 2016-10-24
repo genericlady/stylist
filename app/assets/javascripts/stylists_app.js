@@ -3,16 +3,23 @@ app = angular.module('stylists',[]);
 app.controller("StylistSearchController", [
           "$scope", "$http",
   function($scope ,  $http) {
+    var page = 0;
+
+    $scope.searchTerms = { "search_terms": { "stylist": "", "near": "" } };
+    $scope.stylist = "";
+    $scope.near    = "";
+
     $scope.stylists = [];
-    $scope.search = function(params) {
+    $scope.search = function(search_params) {
+      $scope.stylist = search_params['search_terms']['stylist'];
+      $scope.near    = search_params['search_terms']['near'];
+
       $http.get("/stylists.json",
                 {
                   paramSerializer: '$httpParamSerializerJQLike',
                   "params": {
-                    "search_terms": {
-                      'stylist': params['search_terms']['stylist'],
-                      'near':    params['search_terms']['near']
-                    }
+                    "search_terms": { 'stylist': $scope.stylist, 'near': $scope.near },
+                    "page": page
                   }
                 }
       ).then(function(response) {
@@ -21,21 +28,34 @@ app.controller("StylistSearchController", [
         alert("There was a problem: " + response.status);
         }
       );
-    $scope.searchedFor = params['search_terms']['stylist'] + ' ' +
-                         params['search_terms']['near']
-    };
+      $scope.searchedFor = search_params['search_terms']['stylist'] +
+                           ' ' +
+                           search_params['search_terms']['near'];
+
+    }
+
+    $scope.previousPage = function() {
+      if (page > 0) {
+        page = page - 1;
+        $scope.search({ "search_terms": { 'stylist': $scope.stylist, 'near': $scope.near } });
+      };
+    }
+
+    $scope.nextPage = function() {
+      page = page + 1;
+      $scope.search({ "search_terms": { 'stylist': $scope.stylist, 'near': $scope.near } });
+    }
   }
+    
 ]);
 
 function fullAddress() {
   return function (location) {
     return location.address1
-           + " "
-           + location.address2
-           + "  "
-           + location.city
-           + ", "
-           + location.state
+             + " "
+             + location.city
+             + ", "
+             + location.state
   };
 }
 app.filter('fullAddress', fullAddress);
