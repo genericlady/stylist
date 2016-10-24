@@ -20,3 +20,4 @@ notes.md
 *.swp
 *~
 *.swo
+/spec/examples.txt
