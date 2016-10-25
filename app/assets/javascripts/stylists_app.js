@@ -11,7 +11,8 @@ app.controller("StylistSearchController", [
 
     $scope.stylists = [];
     $scope.search = function(search_params) {
-      if (search_params.search_terms.near.length < 3) {
+      if (search_params.search_terms.near.length < 3 && 
+          search_params.search_terms.stylist.length < 3) {
         return;
       }
 
