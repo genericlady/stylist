@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-describe StylistSearch do
+feature "Stylist Search" do
 
 end
