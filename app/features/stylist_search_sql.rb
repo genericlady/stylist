@@ -14,7 +14,7 @@ class StylistSearchSQL
       build_name_city_and_state_search 
     elsif @location_terms.length == 1 && !@name_terms.empty?
       build_name_city_or_state_search
-    elsif @location_terms.length > 0
+    elsif @location_terms.length > 1
       build_location_search
     elsif !@name_terms.empty?
       build_name_search
