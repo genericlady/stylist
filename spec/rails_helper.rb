@@ -8,6 +8,7 @@ require 'capybara/poltergeist'
 
 Capybara.javascript_driver = :poltergeist
 Capybara.default_driver    = :poltergeist
+Capybara.default_max_wait_time = 5 # This is usually 2 seconds
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -19,7 +20,7 @@ RSpec.configure do |config|
   # since we are using DatabaseCleaner it must be set to false
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
-  config.filter_rails_from_backtrace!
+  # config.filter_rails_from_backtrace!
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)

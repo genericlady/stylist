@@ -9,6 +9,7 @@ class StylistSearchSQL
 
     set_location_terms(search_terms)
     set_name_terms(search_terms)
+    binding.pry
     
     if @location_terms.length == 2 && !@name_terms.empty?
       build_name_city_and_state_search 
@@ -117,9 +118,7 @@ class StylistSearchSQL
     @where_clause << " OR #{case_insensitive_search(:state)}"
     @where_args[:state] = starts_with(state)
  
-    @order = "city = " +
-      ActiveRecord::Base.connection.quote(city) +
-      " DESC, last_name ASC"
+    @order = "last_name asc"
   end
   
   def starts_with(keyword)

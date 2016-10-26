@@ -11,12 +11,13 @@
           <div class="form-group">
             <label for="stylist" class="sr-only">Stylist</label>
             <input type="text"
-                   name="search_terms[stylist]"
+                   id="stylist-search"
+                   name="stylist"
                    class="form-control input-lg"
                    placeholder="First Name, Last Name"
                    ng-change="search({ search_terms: { stylist: stylist, near: near } })"
                    ng-model="stylist"
-                   ng-init="stylist = ' '"/>
+                   ng-init="stylist = ''"/>
           </div>
         </div>
         
@@ -24,12 +25,13 @@
           <div class="form-group">
             <label for="near" class="sr-only">Near</label>
             <input type="text"
+                   id="near-search"
                    name="search_terms[near]"
                    class="form-control input-lg"
                    placeholder="City, State"
                    ng-change="search({ search_terms: { stylist: stylist, near: near } })"
                    ng-model="near"
-                   ng-init="near = ' '"/>
+                   ng-init="near = ''"/>
           </div>
         </div>
         

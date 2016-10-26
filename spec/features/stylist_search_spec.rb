@@ -14,6 +14,8 @@ feature "Stylist Search" do
       first_name: first_name,
        last_name: last_name,
         username: "#{Faker::Internet.user_name}#{rand(1000)}",
+        password: "1234567890",
+        password_confirmation: "1234567890",
            email: email
     )
   end
@@ -22,25 +24,27 @@ feature "Stylist Search" do
   let(:password) { "password123" }
 
   before do
-    User.create!(email: email,
+    User.create!(first_name: "Frank",
+                 last_name: "Sinatra",
+                 email: email,
                  password: password,
                  password_confirmation: password)
 
     create_stylist first_name: "Robert",
-                     last_name: "Aaron"
+                   last_name: "Aaron"
 
     create_stylist first_name: "Bob",
-                     last_name: "Johnson"
+                   last_name: "Johnson"
 
     create_stylist first_name: "JR",
-                     last_name: "Bob"
+                   last_name: "Bob"
 
     create_stylist first_name: "Bobby",
-                     last_name: "Dobbs"
+                   last_name: "Dobbs"
 
     create_stylist first_name: "Bob",
-                     last_name: "Jones",
-                         email: "bob123@somewhere.net"
+                   last_name: "Jones",
+                   email: "bob123@somewhere.net"
 
     visit "/stylists"
     fill_in      "Email",    with: "bob@example.com"
@@ -52,5 +56,17 @@ feature "Stylist Search" do
     within "section.search-form" do
       fill_in "stylist", with: "bob"
     end
+    
+    within "section.search-results" do
+      expect(page).to have_content("Results")
+      expect(page.all("ol li.list-group-item").count).to eq(4)
+
+      expect(page.all("ol li.list-group-item")[0]).to have_content("JR")
+      expect(page.all("ol li.list-group-item")[0]).to have_content("Bob")
+
+      expect(page.all("ol li.list-group-item")[3]).to have_content("Bob")
+      expect(page.all("ol li.list-group-item")[3]).to have_content("Jones")
+    end
   end
+
 end

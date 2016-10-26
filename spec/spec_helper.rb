@@ -9,6 +9,9 @@ RSpec.configure do |config|
     mocks.verify_doubled_constant_names = true
   end
 
+  config.disable_monkey_patching!
+  config.expose_dsl_globally = true
+
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
   # config.filter_run_when_matching :focus
@@ -17,8 +20,6 @@ RSpec.configure do |config|
 
   config.example_status_persistence_file_path = "spec/examples.txt"
 
-  config.disable_monkey_patching!
-  config.expose_dsl_globally = true
 
   if config.files_to_run.one?
     config.default_formatter = 'doc'
