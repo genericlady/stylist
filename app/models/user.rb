@@ -5,9 +5,18 @@ class User < ApplicationRecord
 
   include PgSearch
 
-  pg_search_scope :search_by_full_name,
+  pg_search_scope :search,
                   :against => [:first_name, :last_name],
                   :using   => {
                     :tsearch => { :prefix => true }
+                  },
+                  :associated_against => {
+                    :locations => [:city, :state]
                   }
+
+
+  def self.query(terms, page_size, page)
+    
+    search(terms[:stylist] + " " + terms[:near])
+  end
 end
