@@ -3,8 +3,6 @@ app.controller("StylistSearchController", [
   function($scope ,  $http) {
     var page = 0;
 
-    $scope.searchTerms = { "search_terms": "" };
-
     $scope.stylists = [];
 
     $scope.search = function(search_params) {
