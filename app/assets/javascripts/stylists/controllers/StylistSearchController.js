@@ -1,6 +1,6 @@
 app.controller("StylistSearchController", [
-          "$scope", "$http",
-  function($scope ,  $http) {
+          "$scope", "stylists",
+  function($scope ,  stylists) {
     var page = 0;
 
     $scope.stylists = [];
@@ -11,21 +11,10 @@ app.controller("StylistSearchController", [
       }
 
       $scope.searchTerms = search_params['search_terms'];
-
-      $http.get("/stylists.json",
-                {
-                  paramSerializer: '$httpParamSerializerJQLike',
-                  "params": {
-                    "search_terms": $scope.searchTerms,
-                    "page": page
-                  }
-                }
-      ).then(function(response) {
-        $scope.stylists = response.data;
-      },function(response) {
-        alert("There was a problem: " + response.status);
-        }
-      );
+      
+      stylists.query($scope.searchTerms, page).success(function(data) {
+        $scope.stylists = data;
+      });
 
       $scope.searchedFor = search_params['search_terms'];
 
