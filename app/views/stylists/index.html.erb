@@ -7,43 +7,30 @@
   <section class="search-form">
     <form>
       <div class="row">
-        <div class="col-sm-5">
+        <div class="col-sm-10">
           <div class="form-group">
-            <label for="stylist" class="sr-only">Stylist</label>
+            <label for="searchTerms" class="sr-only">Search</label>
             <input type="text"
-                   id="stylist-search"
-                   name="stylist"
+                   id="search-terms"
+                   name="searchTerms"
                    class="form-control input-lg"
-                   placeholder="First Name, Last Name"
-                   ng-change="search({ search_terms: { stylist: stylist, near: near } })"
-                   ng-model="stylist"
-                   ng-init="stylist = ''"/>
+                   placeholder="First Name, Last Name, City, State"
+                   ng-change="search({ search_terms: searchTerms })"
+                   ng-model="searchTerms"
+                   ng-init="searchTerms = ''"/>
           </div>
         </div>
-        
-        <div class="col-sm-5">
-          <div class="form-group">
-            <label for="near" class="sr-only">Near</label>
-            <input type="text"
-                   id="near-search"
-                   name="search_terms[near]"
-                   class="form-control input-lg"
-                   placeholder="City, State"
-                   ng-change="search({ search_terms: { stylist: stylist, near: near } })"
-                   ng-model="near"
-                   ng-init="near = ''"/>
-          </div>
-        </div>
-        
+               
         <div class="col-sm-2">
-          <button class="btn btn-primary btn-lg"
-                  ng-click="search({ search_terms: { stylist: stylist, near: near } })">
+          <button class="btn btn-primary btn-lg btn-block"
+                  ng-click="search({ search_terms: search-terms })">
             Search
           </button>
         </div>
       </div> <!-- /.row -->
     </form>
   </section>
+
   <h1 class="searchedFor" ng-if="searchedFor">
     <small>Searched for:</small> {{searchedFor}}
   </h1>

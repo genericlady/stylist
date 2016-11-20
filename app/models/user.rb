@@ -16,7 +16,6 @@ class User < ApplicationRecord
 
 
   def self.query(terms, page_size, page)
-    
-    search(terms[:stylist] + " " + terms[:near])
+    search(terms)
   end
 end
