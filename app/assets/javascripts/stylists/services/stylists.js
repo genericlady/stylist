@@ -1,6 +1,6 @@
 app.factory('stylists', ['$http', function($http) {
 
-  var query = function (searchTerms, page) {
+  var query = function (searchTerms, page, callback) {
     $http.get("/stylists.json",
               {
                 paramSerializer: '$httpParamSerializerJQLike',
@@ -10,7 +10,7 @@ app.factory('stylists', ['$http', function($http) {
                 }
               }
     ).success(function(response) {
-      return response.data;
+      callback(response);
     })
     .error(function(err) {
       return err;

@@ -12,9 +12,10 @@ app.controller("StylistSearchController", [
 
       $scope.searchTerms = search_params['search_terms'];
       
-      stylists.query($scope.searchTerms, page).success(function(data) {
-        $scope.stylists = data;
+      stylists.query($scope.searchTerms, page, function(results) {
+        $scope.stylists = results;
       });
+      
 
       $scope.searchedFor = search_params['search_terms'];
 
