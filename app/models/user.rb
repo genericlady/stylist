@@ -16,6 +16,6 @@ class User < ApplicationRecord
 
 
   def self.query(terms, page_size, page)
-    search(terms)
+    search(terms).includes(:locations)
   end
 end
