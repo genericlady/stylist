@@ -1,4 +1,4 @@
-app = angular.module('stylists',[]);
+app = angular.module('stylists',['ngMap']);
 
 function fullAddress() {
   return function (location) {

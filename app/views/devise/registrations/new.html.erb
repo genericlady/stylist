@@ -4,9 +4,36 @@
   <%= devise_error_messages! %>
 
   <div class="form-group">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, class: "form-control" %>
   </div>
+
+  <%= f.fields_for :locations do |location_fields| %>
+    <%= location_fields.label :address1 %><br />
+    <%= location_fields.text_field :address1, class: "form-control"  %><br />
+
+    <%= location_fields.label :address2 %><br />
+    <%= location_fields.text_field :address2, class: "form-control" %><br />
+
+    <%= location_fields.label :city %><br />
+    <%= location_fields.text_field :city, class: "form-control" %><br />
+
+    <%= location_fields.label :state %><br />
+    <%= location_fields.text_field :state, class: "form-control" %><br />
+
+    <%= location_fields.label :zip %><br />
+    <%= location_fields.text_field :zip, class: "form-control" %><br />
+  <% end %>
 
   <div class="form-group">
     <%= f.label :password %>

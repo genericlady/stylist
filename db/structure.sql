@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.3
--- Dumped by pg_dump version 9.5.3
+-- Dumped from database version 9.5.4
+-- Dumped by pg_dump version 9.5.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -58,7 +58,9 @@ CREATE TABLE locations (
     state character varying(2) NOT NULL,
     zip character varying(9) NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    latitude double precision,
+    longitude double precision
 );
 
 
@@ -241,6 +243,6 @@ CREATE INDEX users_lower_last_name ON users USING btree (lower((last_name)::text
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161011202802'), ('20161012010506');
+INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161011202802'), ('20161012010506'), ('20161122005746');
 
 

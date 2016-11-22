@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Stylist</title>
-    <%= csrf_meta_tags %>
+	<title>Stylist</title>
+	<%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+	<%= stylesheet_link_tag    'application', media: 'all' %>
+	<%= javascript_include_tag 'application' %>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYNqRyHQWcSGMzOeYIj6wHLzytzV7GcA0">
+  </script>
+
   </head>
+  <%= render "layouts/nav" %>
 
-  <body class="container">
-    <% if notice.present? %>
-      <aside class="alert alert-info">
-        <%= notice %>
-      </aside>
-    <% end %>
-    <% if alert.present? %>
-      <aside class="alert alert-danger">
-        <%= alert %>
-      </aside>
-    <% end %>
-    
-    <%= yield %>
-  </body>
+  <main>
+    <body class="container">
+
+      <% if notice.present? %>
+        <aside class="alert alert-info">
+          <%= notice %>
+        </aside>
+      <% end %>
+      <% if alert.present? %>
+        <aside class="alert alert-danger">
+          <%= alert %>
+        </aside>
+      <% end %>
+      
+      <%= yield %>
+    </body>
+  </main>
+
 </html>

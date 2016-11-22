@@ -6,7 +6,8 @@ class StylistsController < ApplicationController
 
     if params[:search_terms].present?
       @search_terms = params[:search_terms]
-      @stylists = User.query(@search_terms, PAGE_SIZE, @page)
+      stylist_search = StylistSearch.new(@search_terms, PAGE_SIZE, @page)
+      @stylists = stylist_search.query
     else
       @stylists = []
     end

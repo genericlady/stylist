@@ -1,0 +1,87 @@
+@import 'bootstrap';
+$red: #94090E;
+$light-red: lighten($red, 10%);
+$dark-red: darken($red, 10%);
+
+nav {
+  background-color: $red;
+  padding-left: 3.41em;
+
+  .nav-container {
+    max-width: 870px;
+  }
+
+  .navbar-brand {
+  }
+
+  .navbar-menu {
+  }
+
+  a.nav-link {
+    color: black;
+  }
+
+  a.navbar-brand {
+    color: white;
+  }
+
+
+  li {
+    a:hover, a:focus {
+      background-color: white;
+      color: $light-red !important;
+    }
+
+    a:visited {
+      color: lighten(lightgrey, 7%);	
+    }
+  }
+
+  button.navbar-toggler {
+    background-color: white;
+  }
+
+  .btn-outline-success {
+    color: $red;
+    background-color: white;
+    border-color: $red;
+  }
+
+  .btn-outline-success:hover {
+    color: white;
+    background-image: none;
+    background-color: $dark-red;
+    border-color: white;
+
+  }
+}
+
+
+.navigation-search-field {
+  height: 2.314em !important;
+}
+
+.navbar-search-form {
+	float: left;
+	padding-top: .59em;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.icon-bar {
+	display:block;
+	width: 1.33em;
+	height: 3px;
+	border: 1.33px solid $red;
+	padding: 1px 0;
+	margin: 2px 0;
+}
+
+.navbar-toggler {
+	border-color: rgba(0,0,0,.1);
+	margin-right: 1em;
+}
+
+.secondary-navigation {
+  margin-right: 1.3em;
+}

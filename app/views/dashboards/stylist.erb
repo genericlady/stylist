@@ -1,0 +1,80 @@
+<div class="jumbotron">
+  <img src="http://placehold.it/200/E8117F/200" class="bottom-left-profile-photo img-fluid img-thumbnail" alt="Responsive image">
+</div>
+
+<div class="row">
+	<div class="secondary-navigation float-xs-right" aria-live="secondary-navigation">
+		<ul class="list-inline float-xs-right">
+			<li class="list-inline-item"><a href="#">Beauty Feed</a></li>
+			<li class="list-inline-item"><a href="#">Photos</a></li>
+			<li class="list-inline-item"><a href="#">Pinners</a></li>
+		</ul>
+	</div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-4">
+		<div id="profile-widget-aboutme">
+			<h4>About Me</h4>
+			<p>
+				Name: Cindy Lauper
+				<br>
+				I have trained at the world famous blah blah blah.
+				My hurrcuts are fabulous and you will love your new look.
+			</p>
+		</div>
+    <div id="profile-widget-location">
+      <h4>Locations</h4>
+      <%= render "maps/stylist_map.js.erb" %>
+    </div>
+  </div>
+  <div class="col-sm-8">
+		<div class="row">
+			<div class="beauty-console col-sm-12">
+
+				<form>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Beauty Console</label>
+						<input type="beauty-console" class="form-control" id="beauty-console" aria-describedby="beautyConsole" placeholder="Say Something and upload a photo">
+						<small id="beautyConsoleHelp" class="form-text text-muted">Don't Worry Be Happy</small>
+					</div>
+				</form>
+
+			</div>
+			<div class="beauty-card col-sm-12">
+				<div class="card">
+					<img src="http://placehold.it/530x325/E8117F" class="card-img-top img-fluid" alt="Card image cap">
+					<div class="card-block">
+						<h4 class="card-title">Src: BeautyPin</h4>
+						<p class="card-text">Text: #BeautyPin Stuff and things about hair #FashionShow #Summer 2017 fufu collection</p>
+						<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="beauty-card col-sm-12">
+				<div class="card">
+					<img src="http://placehold.it/530x325/E8117F" class="card-img-top img-fluid" alt="Card image cap">
+					<div class="card-block">
+						<h4 class="card-title">Src: Instagram</h4>
+						<p class="card-text">Text: #BeautyPin Stuff and things about hair #FashionShow #Summer 2017 fufu collection</p>
+						<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="beauty-card col-sm-12">
+				<div class="card">
+					<img src="http://placehold.it/530x325/E8117F" class="card-img-top img-fluid" alt="Card image cap">
+					<div class="card-block">
+						<h4 class="card-title">Src: Twitter</h4>
+						<p class="card-text">Text: #BeautyPin Stuff and things about hair #FashionShow #Summer 2017 fufu collection</p>
+						<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+  </div>
+</div>

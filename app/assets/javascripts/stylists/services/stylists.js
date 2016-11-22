@@ -1,6 +1,6 @@
 app.factory('stylists', ['$http', function($http) {
 
-  var query = function (searchTerms, page, callback) {
+  var stylistQuery = function (searchTerms, page, callback) {
     $http.get("/stylists.json",
               {
                 paramSerializer: '$httpParamSerializerJQLike',
@@ -18,8 +18,27 @@ app.factory('stylists', ['$http', function($http) {
  
   };
 
+  var locationQuery = function (searchTerms, page, callback) {
+    $http.get("/locations.json",
+              {
+              paramSerializer: '$httpParamSerializerJQLike',
+                "params": {
+                  "search_terms": searchTerms,
+                  "page": page
+                }
+              }
+    ).success(function(response) {
+      callback(response); 
+    })
+    .error(function(err) {
+      return err;
+    });
+
+  };
+
   return {
-    query: query,
+    stylistQuery: stylistQuery,
+    locationQuery: locationQuery
   }
 }]);
 
