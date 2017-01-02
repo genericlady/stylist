@@ -28,15 +28,28 @@
                 <option selected value="stylist">Stylist</option>
                 <option value="beauty">Beauty</option>
               </select>
+              <input class="navigation-search-field col-xs-4"
+                     type="text"
+                     id="search-terms"
+                     name="searchTerms[name]"
+                     class="form-control input-lg"
+                     placeholder="First Name, Last Name"
+                     ng-change="search(searchTerms);"
+                     ng-model="searchTerms['name']"
+                     ng-init="searchTerms = ''"/>
 
               <input class="navigation-search-field col-xs-4"
-                     type="text">
-
-              <input class="navigation-search-field col-xs-4"
-                     type="text" placeholder="City and/or State">
+                     type="text"
+                     placeholder="City and/or State"
+                     name="searchTerms[location]"
+                     class="form-control input-lg"
+                     ng-change="search(searchTerms);"
+                     ng-model="searchTerms['location']"
+                     ng-init="searchTerms = {name: '', location: ''}"/>
 
               <button class="navigation-search btn btn-outline-success col-xs-2"
-                      type="submit">Search</button>
+                      type="submit"
+                      ng-click="search(searchTerms)">Search</button>
 
           </form>
 
