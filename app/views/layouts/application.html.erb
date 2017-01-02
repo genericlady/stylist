@@ -11,9 +11,9 @@
   </script>
 
   </head>
-  <%= render "layouts/nav" %>
 
-  <main>
+  <main ng-app="stylists" ng-controller="StylistSearchController">
+  <%= render "layouts/nav" %>
     <body class="container">
 
       <% if notice.present? %>
