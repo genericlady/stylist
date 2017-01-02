@@ -23,7 +23,7 @@ app.controller("StylistSearchController", [
             return stylist;
           });
           if ($scope.stylists.length > 0) {
-            initializeMap();
+            Map.render($scope.stylists);
           }
         });
       } else if (searchParams.name.length > 0) {
@@ -35,27 +35,13 @@ app.controller("StylistSearchController", [
             stylist.locations = result.locations;
             return stylist;
           });
-          
           if ($scope.stylists.length > 0) {
-            initializeMap();
+            Map.render($scope.stylists);
           }
         });
       }
 
       $scope.searchedFor = searchParams;
-
-    }
-
-    initializeMap = function() {
-
-      var stylist_markers = getStylistMarkers();
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 3,
-        center: {lat: $scope.stylists[0].locations[0].latitude, lng: $scope.stylists[0].locations[0].longitude}
-      });
-
-      var map_image_path = {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'};
-      var markerCluster = new MarkerClusterer(map, stylist_markers, map_image_path);
 
     }
 
@@ -70,33 +56,6 @@ app.controller("StylistSearchController", [
       page = page + 1;
       $scope.search($scope.searchTerms);
     }
-
-    function getStylistMarkers() {
-      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      var markers = $scope.stylists.map(function(stylist, i) {
-        var locations = stylist.
-                        locations.
-                        map((location) => {
-                          return {lat: location.latitude, lng: location.longitude}; 
-                        });
-
-        var stylistMarkers = locations.map(function(coords) {
-          return new google.maps.Marker({
-            position: coords,
-            label: labels[i % labels.length]
-          });
-        });
-        
-        return stylistMarkers
-      });
-
-      var flattened_markers = markers.reduce(function(a, b) {
-          return a.concat(b); 
-      });
-
-      return flattened_markers;
-    };
-
   }
 ]);
 
