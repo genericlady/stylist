@@ -13,6 +13,7 @@ gem 'bower-rails'
 gem 'pg_search'
 gem 'geocoder'
 gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'kaminari'
 
 group :development, :test do
   gem 'pry-rails'
