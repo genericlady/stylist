@@ -1,48 +1,8 @@
-<article ng-app="stylists" ng-controller="StylistSearchController">
+<article>
 
   <header>
     <h1 class="h2">Stylist Search</h1>
   </header>
-
-  <section class="search-form">
-    <form>
-      <div class="row">
-         <div class="col-sm-5">
-          <div class="form-group">
-            <label for="searchTerms" class="sr-only">Search</label>
-            <input type="text"
-                   id="search-terms"
-                   name="searchTerms[name]"
-                   class="form-control input-lg"
-                   placeholder="First Name, Last Name"
-                   ng-change="search(searchTerms);"
-                   ng-model="searchTerms['name']"
-                   ng-init="searchTerms = ''"/>
-          </div>
-        </div>
-         <div class="col-sm-5">
-          <div class="form-group">
-            <label for="searchTerms" class="sr-only">Search</label>
-            <input type="text"
-                   id="search-terms"
-                   name="searchTerms[location]"
-                   class="form-control input-lg"
-                   placeholder="City, State"
-                   ng-change="search(searchTerms);"
-                   ng-model="searchTerms['location']"
-                   ng-init="searchTerms = {name: '', location: ''}"/>
-          </div>
-        </div>
-              
-        <div class="col-sm-2">
-          <button class="btn btn-primary btn-lg btn-block"
-                  ng-click="search(searchTerms)">
-            Search
-          </button>
-        </div>
-      </div> <!-- /.row -->
-    </form>
-  </section>
 
   <%= render "maps/stylist_map.js.erb" %>
 
