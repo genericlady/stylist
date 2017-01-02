@@ -10,7 +10,6 @@
     <header>
       <h1 class="h3">Results</h1>
     </header>
-    <%= render partial: "pager", locals: { search_terms: @search_terms, page: @page } %>
 
     <ol class="list-group">
       <li class="list-group-item clearfix"
@@ -25,7 +24,7 @@
         <h4>{{ stylist.locations[0] | fullAddress }}</h4>
       </li>
     </ol>
-    <%= render partial: "pager", locals: { search_terms: @search_terms, page: @page } %>
+
   </section>
 
 </article>
