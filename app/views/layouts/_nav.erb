@@ -33,23 +33,16 @@
                      id="search-terms"
                      name="query[terms]"
                      class="form-control input-lg"
-                     placeholder="First Name, Last Name"
-                     ng-change="search(searchTerms);"
-                     ng-model="searchTerms['name']"
-                     ng-init="searchTerms = ''"/>
+                     placeholder="First Name, Last Name"/>
 
               <input class="navigation-search-field col-xs-4"
                      type="text"
                      placeholder="City and/or State"
                      name="query[location]"
-                     class="form-control input-lg"
-                     ng-change="search(searchTerms);"
-                     ng-model="searchTerms['location']"
-                     ng-init="searchTerms = {name: '', location: ''}"/>
+                     class="form-control input-lg"/>
 
               <button class="navigation-search btn btn-outline-success col-xs-2"
-                      type="submit"
-                      ng-click="search(searchTerms)">Search</button>
+                      type="submit">Search</button>
 
           </form>
 
