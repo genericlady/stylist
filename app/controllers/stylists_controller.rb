@@ -2,10 +2,11 @@ class StylistsController < ApplicationController
 
   def index
     query = params_for_query[:query]
+    stylist_search = StylistSearch.new(query)
 
     search_results =
-      StylistSearch.
-        run(query).
+      stylist_search.
+        results.
         as_json(include: :locations)
 
     @stylists =
