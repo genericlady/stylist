@@ -17,7 +17,7 @@ class StylistSearch
   end
 
   def top_20
-    User.all.includes(:locations)
+    User.all.limit(20).includes(:locations)
   end
 
   private
