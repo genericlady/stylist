@@ -23,15 +23,15 @@
            id="navbarResponsive">
 
         <div class="navigation-search-wrapper col-xs-8">
-          <form id="navigation-search row" class="form-inline">
-              <select class="custom-select col-xs-2">
+          <form action="/stylists" id="navigation-search row" class="form-inline">
+              <select name="query[type]" class="custom-select col-xs-2">
                 <option selected value="stylist">Stylist</option>
                 <option value="beauty">Beauty</option>
               </select>
               <input class="navigation-search-field col-xs-4"
                      type="text"
                      id="search-terms"
-                     name="searchTerms[name]"
+                     name="query[terms]"
                      class="form-control input-lg"
                      placeholder="First Name, Last Name"
                      ng-change="search(searchTerms);"
@@ -41,7 +41,7 @@
               <input class="navigation-search-field col-xs-4"
                      type="text"
                      placeholder="City and/or State"
-                     name="searchTerms[location]"
+                     name="query[location]"
                      class="form-control input-lg"
                      ng-change="search(searchTerms);"
                      ng-model="searchTerms['location']"
