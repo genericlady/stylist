@@ -1,15 +1,24 @@
 class StylistsController < ApplicationController
-  PAGE_SIZE = 10
 
   def index
-    @page = (params[:page] || 0).to_i
+    query = params_for_query[:query]
 
-    if params[:search_terms].present?
-      @search_terms = params[:search_terms]
-      stylist_search = StylistSearch.new(@search_terms, PAGE_SIZE, @page)
-      @stylists = stylist_search.query
+    search_results =
+      StylistSearch.
+        run(query).
+        as_json(include: :locations)
+
+    @stylists =
+      Kaminari.
+      paginate_array(search_results).
+        page(params[:page]).
+        per(10)
+
+    if query.nil? || query[:location].empty?
+     @markers = MapMarker.new_for_each(@stylists)
     else
-      @stylists = []
+     location_expression = LocationExpression.create(query)
+     @markers = MapMarker.new_for_each(@stylists, location_expression)
     end
 
     respond_to do |format|
@@ -17,5 +26,11 @@ class StylistsController < ApplicationController
       format.json { render json: @stylists.to_json(include: [:locations]) }
     end
   end
-  
+
+  private
+
+  def params_for_query
+    params.permit(query: [:type, :terms, :location])
+  end
+
 end

@@ -3,15 +3,6 @@
 
 <script>
   $(function() {
-    var stylists = [{
-      first_name: "Crystal",
-      last_name: "Foo",
-      locations: [{
-        latitude: 40.7179553,
-        longitude: -73.9567602
-      }] 
-    }];
-
-    Map.render(stylists);
+    Map.render(<%= @markers.to_json.html_safe %>);
   });
 </script>
