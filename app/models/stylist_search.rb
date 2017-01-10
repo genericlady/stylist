@@ -1,28 +1,31 @@
 class StylistSearch
+  def initialize(query)
+    @query = query
+  end
 
-  def self.run(query)
-    query = query || blank_query
-
-    full_query = query[:terms] + query[:location]
-
-    if query[:location].blank? && query[:terms].blank?
+  def results
+    if location_blank? && terms_blank?
       top_20
-
-    elsif query[:location].blank? && !query[:terms].blank?
-
-      User.joins(:locations).search_by_name(full_query)
-
-    elsif (!query[:location].blank? && !query[:terms].blank?) ||
-          (!query[:location].blank? && query[:terms].blank?)
-
-      User.joins(:locations).search_by_name_and_location(full_query)
+    elsif location_blank? && !terms_blank?
+      User.search_by_name(full_query).includes(:locations)
+    elsif (!location_blank? && !terms_blank?) ||
+          (!location_blank? && terms_blank?)
+      User.search_by_name_and_location(full_query).includes(:locations)
     else
       top_20
     end
-
   end
 
-  def self.blank_query
+  def top_20
+    User.all.includes(:locations)
+  end
+
+  private
+  def query
+    @query || blank_query
+  end
+
+  def blank_query
     {
       query_type: 'stylist',
       terms: '',
@@ -30,7 +33,22 @@ class StylistSearch
     }
   end
 
-  def self.top_20
-    User.all.includes(:locations)
+  def terms_blank?
+    query[:terms].blank?
   end
+
+  def location_blank?
+    query[:location].blank?
+  end
+
+  def full_query
+    if terms_blank? && location_blank?
+      ""
+    elsif terms_blank?
+      query[:location]
+    else
+      query[:terms] + " " + query[:location]
+    end
+  end
+
 end
