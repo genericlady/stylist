@@ -1,9 +1,17 @@
+<%
+  logout_options =
+  {
+    method: :delete,
+    class: "nav-link",
+  }
+%>
+
 <% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+  <li class="list-inline-item login-helper nav-list-item">
+    <%= link_to('Logout', destroy_user_session_path, logout_options) %>        
   </li>
 <% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path)  %>  
+  <li class="list-inline-item nav-list-item">
+    <%= link_to('Login', new_user_session_path, {class: "nav-link"}) %>  
   </li>
 <% end %>
