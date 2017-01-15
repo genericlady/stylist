@@ -7,11 +7,11 @@
 %>
 
 <% if user_signed_in? %>
-  <li class="list-inline-item login-helper nav-list-item">
+  <li class="list-inline-item login-helper nav-item">
     <%= link_to('Logout', destroy_user_session_path, logout_options) %>        
   </li>
 <% else %>
-  <li class="list-inline-item nav-list-item">
+  <li class="list-inline-item nav-item">
     <%= link_to('Login', new_user_session_path, {class: "nav-link"}) %>  
   </li>
 <% end %>

@@ -1,0 +1,72 @@
+<nav class="navbar navbar-fixed-top navbar-toggleable-md row">
+
+  <!--<#= render "layouts/toggle_navigation" %>-->
+  <button class="navbar-toggler float-xs-right hidden-lg-up col-xs-1"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+    <span class="toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand col-xs-2 col-lg-1" 
+     aria-label="BeautyPin Logo"
+     href="/">BeautyPin</a>
+
+  <!--
+    <div class="hidden-md-down desktop-navigation col-lg-11">
+      I am nav
+    </div>
+
+    On a large screen we can show this element
+    make sure it uses the calss col-lg-11
+    make sure padding and margin is set to 0px
+  -->
+
+  <div class="collapse navbar-collapse col-xs-12 col-lg-10"
+           id="navbarNavAltMarkup">
+    <ul class="navbar-nav list-unstyled row">
+      <li class="col-xs-12 col-lg-9 nav-item">
+        <form action="/stylists" id="navigation-search-fields" class="row">
+
+          <select name="query[type]" class="custom-select">
+            <option selected value="stylist">Stylist</option>
+            <option value="beauty">Beauty</option>
+          </select>
+
+          <input class="navigation-search-terms"
+                 type="text"
+                 id="search-terms"
+                 name="query[terms]"
+                 class="form-control input-lg"
+                 placeholder="First Name, Last Name"/>
+
+          <input class="navigation-search-location"
+                 type="text"
+                 placeholder="City, State"
+                 name="query[location]"
+                 class="form-control input-lg"/>
+
+          <button class="btn navigation-search-btn"
+                  type="submit">Search</button>
+
+        </form> <!-- ./row -->
+      </li> <!-- ./col-xs-12 -->
+
+      <li class="nav-item nav-links">
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <a class="nav-link" href="/stylists">Stylists</a>
+          </li>
+
+          <%= render 'layouts/login_items.erb' %>
+        </ul>
+      </li>
+
+    </ul>
+
+  </div><!-- ./collapse -->
+</nav>
+

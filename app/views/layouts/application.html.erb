@@ -12,25 +12,22 @@
 
   </head>
 
-  <main>
-  <%= render "layouts/nav" %>
-    <body class="container">
+  <div class="head-container">
+    <div class="header-row">
+      <%= render "layouts/nav" %>
+    </div>
+  </div>
 
-      <% if notice.present? %>
-        <aside class="alert alert-info">
-          <%= notice %>
-        </aside>
-      <% end %>
-      <% if alert.present? %>
-        <aside class="alert alert-danger">
-          <%= alert %>
-        </aside>
-      <% end %>
-    
-      <div class="row">
-        <%= yield %>
-      </div>
-    </body>
-  </main>
+  <div class="main-container">
+    <div class="content-row">
+      <%= render "layouts/login_errors" %>    
+      <%= yield %>
+    </div>
+
+    <div class="footer-row">
+      FOOTER
+    </div>
+
+  </div>
 
 </html>
