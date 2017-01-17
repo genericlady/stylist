@@ -8,7 +8,8 @@ var Map = (function() {
 
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 4,
-      center: {lat: 36.801087, lng: -98.667907}
+      center: {lat: 36.801087, lng: -98.667907},
+      scrollwheel: false
     });
 
     var mapImagePath = {
