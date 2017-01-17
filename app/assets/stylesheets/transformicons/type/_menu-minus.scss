@@ -1,0 +1,17 @@
+$tcon-jstransform: 'tcon-transform' !default;
+$tcon-size: 40px !default;
+
+.tcon-menu--minus {
+  width: auto;
+
+  &.#{$tcon-jstransform} {
+    .tcon-menu__lines {
+      &::before,
+      &::after {
+        transform: none;
+        top:0;
+        width: $tcon-size;
+      }
+    }
+  }
+}

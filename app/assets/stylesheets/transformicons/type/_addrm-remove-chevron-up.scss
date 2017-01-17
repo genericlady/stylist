@@ -1,0 +1,23 @@
+$tcon-size: 40px !default;
+$tcon-plus-color: black !default;
+$tcon-circle-radius: 80% !default;
+$tcon-plus-bg: transparent !default;
+$tcon-plus-radius: ($tcon-size / 8) !default;
+$tcon-jstransform: 'tcon-transform' !default;
+
+.tcon-remove--chevron-up {
+  &.#{$tcon-jstransform} {
+    &::before {
+      left: 5%;
+      transform: rotate(-45deg);
+      width: 59%;
+    }
+
+    &::after {
+      left: auto;
+      right: 10%;
+      transform: rotate(45deg);
+      width: 60%;
+    }
+  }
+}

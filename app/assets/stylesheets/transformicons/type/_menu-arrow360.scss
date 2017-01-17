@@ -1,0 +1,12 @@
+$tcon-jstransform: 'tcon-transform' !default;
+$tcon-menu-arrow360left-transformation: (
+  transform: scale3d(.8, .8, .8) rotate3d(0, 0, 1, 360deg)
+) !default;
+
+.tcon-menu--arrow360left {
+  &.#{$tcon-jstransform} {
+    @each $property, $value in $tcon-menu-arrow360left-transformation {
+      #{$property} : #{$value};
+    }
+  }
+}

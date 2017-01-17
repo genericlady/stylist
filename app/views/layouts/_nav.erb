@@ -1,17 +1,87 @@
 <nav class="navbar navbar-toggleable-md navbar-fixed-top">
   <div class="nav-row">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+
+    <a class="navbar-brand col-xs-2 col-md-2" href="/">BeautyPin</a>
+
+    <button 
+      type="button"
+      class="col-xs-1 navbar-toggler navbar-toggler-right tcon tcon-menu--xbutterfly"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+        <span class="tcon-menu__lines" aria-hidden="true"></span>
+        <span class="tcon-visuallyhidden">toggle navigation</span>
     </button>
-    <a class="navbar-brand" href="#">BeautyPin</a>
 
-    <div class="collapse navbar-collapse nav-links-collapsable" id="navbarSupportedContent">
+    <div class="search-form col-md-7">
+      <form action="/stylists" class="search-form row">
+
+        <select name="query[type]" class="custom-select col-md-2">
+          <option selected value="service">Service</option>
+          <option value="stylist">Stylist Name</option>
+        </select>
+
+        <input class="navigation-search-terms col-md-5"
+               type="text"
+               id="search-terms"
+               name="query[terms]"
+               class="form-control input-lg"
+               placeholder="Terms"/>
+
+        <input class="navigation-search-location col-md-3"
+               type="text"
+               placeholder="City, State"
+               name="query[location]"
+               class="form-control input-lg"/>
+        <button class="btn navigation-search-btn col-md-2"
+                type="submit">Search</button>
+
+      </form> <!-- ./row -->
+
+    </div><!-- ./col -->
+
+    <div class="nav-links col-md-3">
       <%= render "layouts/nav-links" %>
     </div>
 
-    <div class="nav-links">
-      <%= render "layouts/nav-links" %>
+
+    <div class="col-xs-12 collapse navbar-collapse nav-links-collapsable" id="navbarSupportedContent">
+      <div class="row">
+        <div class="col-xs-10">
+          <form action="/stylists" class="row search-form-collapsable">
+            <input class="navigation-search-terms col-xs-12"
+                   type="text"
+                   id="search-terms"
+                   name="query[terms]"
+                   class="form-control input-lg"
+                   placeholder="Terms"/>
+
+            <input class="navigation-search-location col-xs-12"
+                   type="text"
+                   placeholder="City, State"
+                   name="query[location]"
+                   class="form-control input-lg"/>
+
+
+            <select name="query[type]" class="custom-select col-xs-6">
+              <option value="service">Service</option>
+              <option selected value="stylist">Stylist Name</option>
+            </select>
+
+            <button class="btn navigation-search-btn col-xs-6"
+                    type="submit">Search</button>
+
+          </form> <!-- ./row -->
+
+        </div>
+        <div class="col-xs-2">
+        <%= render "layouts/nav-links" %>
+        </div>
+      </div>
     </div>
-  </div>
+
+  </div><!-- /.nav-row -->
 </nav>
 

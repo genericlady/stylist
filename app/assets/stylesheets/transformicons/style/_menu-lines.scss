@@ -1,0 +1,43 @@
+$tcon-size: 40px !default;
+$tcon-menu-radius: ($tcon-size / 14) !default;
+$tcon-menu-color: black !default;
+$tcon-jstransform: 'tcon-transform' !default;
+$tcon-transition: .3s !default;
+$tcon-search-size: ($tcon-size * 0.75) !default;
+$tcon-search-radius: ($tcon-size / 14) !default;
+
+@mixin tcon-menu-lines {
+  display: inline-block;
+  height: ($tcon-size / 7);
+  width: $tcon-size;
+  border-radius: $tcon-menu-radius;
+  transition: $tcon-transition;
+  background: $tcon-menu-color;
+}
+
+.tcon-menu__lines {
+  @include tcon-menu-lines;
+  position: relative;
+
+  &::before,
+  &::after {
+    @include tcon-menu-lines;
+    content: '';
+    position: absolute;
+    left: 0;
+    transform-origin: ($tcon-size / 14) center;
+    width: 100%;
+  }
+
+  &::before {
+    top: ($tcon-size / 4);
+  }
+
+  &::after {
+    top: -($tcon-size / 4);
+  }
+
+  .#{$tcon-jstransform} & {
+    transform: scale3d(.8, .8, .8);
+  }
+}
