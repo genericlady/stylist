@@ -1,0 +1,18 @@
+<% if @results.first.locatable? %>
+  <%= render "maps/stylist_map.js.erb" %>
+<% end %>
+
+<% @results.each do |r| %>
+  <div class="card">
+    <%= image_tag "haircut-emoji.png", {class: "card-img-top img-thumbnail", alt: "Card image cap"} %>
+    <div class="card-block">
+      <h4 class="card-title"><%= r.title %></h4>
+      <h5 class="card-subtitle"><%= r.subtitle %></h5>
+      <p class="card-text"><%= r.print_locations %></p>
+      <p>Rating: <%= r.rating %></p>
+      <em>Total Votes: <%= r.total_reviews %></em>
+    </div>
+  </div>
+
+<% end %>
+
