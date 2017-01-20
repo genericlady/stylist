@@ -6,9 +6,8 @@ Rails.application.routes.draw do
     }
 
   get 'locations',      to: 'locations#index'
-  get 'stylists/index', to: 'stylists#index'
+  get 'search',         to: 'results#index'
   get 'stylists',       to: 'stylists#index'
-  get 'angular_test',   to: 'angular_test#index'
   
   root 'stylists/dashboards#show'
   
