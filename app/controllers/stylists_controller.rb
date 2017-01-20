@@ -1,7 +1,7 @@
 class StylistsController < ApplicationController
 
   def index
-    query = params_for_query[:query]
+    query = permitted_query_params[:query]
     stylist_search = StylistSearch.new(query)
 
     search_results =
@@ -26,12 +26,6 @@ class StylistsController < ApplicationController
       format.html {}
       format.json { render json: @stylists.to_json(include: [:locations]) }
     end
-  end
-
-  private
-
-  def params_for_query
-    params.permit(query: [:type, :terms, :location])
   end
 
 end
