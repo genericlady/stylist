@@ -28,4 +28,6 @@ class StylistsController < ApplicationController
     end
   end
 
+  def show
+  end
 end
