@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get 'locations',      to: 'locations#index'
   get 'search',         to: 'results#index'
   get 'stylists',       to: 'stylists#index'
+  get 'stylists/:id',   to: 'stylists#show'
   
-  root 'stylists/dashboards#show'
+  root 'static_pages#home'
   
 end
