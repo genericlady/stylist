@@ -1,4 +1,5 @@
 class StylistResult
+  include ActionView::Helpers::TagHelper
   include Result::Base
 
   def initialize(stylist_hash)
@@ -10,7 +11,7 @@ class StylistResult
   end
 
   def title
-    stylist["first_name"] + " " + stylist["last_name"]
+    content_tag(:a, full_name_string, href: path_to_stylist)
   end
 
   def subtitle
@@ -22,7 +23,7 @@ class StylistResult
   end
 
   def print_locations
-    stylist["locations"].
+    locations.
       map do |l|
         "#{l["city"]}, #{l["state"]}"
       end.join(' | ')
@@ -44,4 +45,13 @@ class StylistResult
   def stylist
     @stylist || {}
   end
+
+  def full_name_string
+    stylist["first_name"] + " " + stylist["last_name"]
+  end
+
+  def path_to_stylist
+    '/stylists/' + stylist["id"].to_s
+  end
+
 end
