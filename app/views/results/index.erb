@@ -1,18 +1,60 @@
 <% if @results.first.locatable? %>
+  <div class="col-xs-12">
   <%= render "maps/stylist_map.js.erb" %>
-<% end %>
-
-<% @results.each do |r| %>
-  <div class="card">
-    <%= image_tag "haircut-emoji.png", {class: "card-img-top img-thumbnail", alt: "Card image cap"} %>
-    <div class="card-block">
-      <h4 class="card-title"><%= r.title %></h4>
-      <h5 class="card-subtitle"><%= r.subtitle %></h5>
-      <p class="card-text"><%= r.print_locations %></p>
-      <p>Rating: <%= r.rating %></p>
-      <em>Total Votes: <%= r.total_reviews %></em>
-    </div>
   </div>
-
 <% end %>
 
+<div class="col-xs-12 col-md-9 col-lg-8">
+  <% @results.each do |r| %>
+    <div class="card">
+      <%= image_tag "haircut-emoji.png", {class: "card-img-top col-xs-5 img-thumbnail", alt: "Card image cap"} %>
+      <div class="card-block">
+        <h4 class="card-title"><%= r.title %></h4>
+        <h5 class="card-subtitle"><%= r.subtitle %></h5>
+        <p class="card-text"><%= r.print_locations %></p>
+        <div class="card-footer text-muted">
+          <p>Rating: <%= r.rating %></p>
+          <em>Total Votes: <%= r.total_reviews %></em>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="col-xs-12 col-md-3 co-lg-4">
+  <div class="row">
+  advertisement
+  </div>
+  <div class="row">
+  <br>
+  Sort by:
+  <br>
+  Best Rating
+  <br>
+  Most Votes
+  <br><br>
+  filter
+  <br>
+  price:
+  <br>
+  $
+  <br>
+  $$
+  <br>
+  $$$
+  <br>
+  rating:
+  <br>
+  *
+  <br>
+  **
+  <br>
+  ***
+  <br>
+  ****
+  <br>
+  *****
+  </div>
+  <div class="row">
+  advertisement
+  </div>
+</div>
