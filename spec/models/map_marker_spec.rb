@@ -14,15 +14,20 @@ describe MapMarker do
 
   describe "#new_for_each(array)" do
     it "Given a collection of stylists can return a list of markers" do
-      markers = MapMarker.new_for_each(stylists.as_json(include: :locations))
+      markers =
+        MapMarker.
+        new_for_each(stylists.as_json(include: :locations).
+        map { |result| StylistResult.new(result) })
       expect(markers.length).to eq(3)
     end
   end
 
   describe "#new_for_each(array, expression)" do
     it "Given a array of user hashes with expression return a list of markers that match the expression" do
-      markers = MapMarker.
-        new_for_each(stylists.as_json(include: :locations), /brooklyn\b/i)
+      markers =
+        MapMarker.
+        new_for_each(stylists.as_json(include: :locations).
+        map { |result| StylistResult.new(result) }, /brooklyn\b/i)
       expect(markers.length).to eq(2)
     end
   end
