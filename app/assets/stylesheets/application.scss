@@ -6,6 +6,8 @@
  */
 
 @import "bootstrap";
+@import "bootstrap_variables";
+
 $blue: #502BE4;
 // $red: #94090E;
 $red: #2E2324;
@@ -164,3 +166,59 @@ a.nav-link, a.navbar-brand {
 	background-color: grey;
 }
 
+.card { text-align: center; }
+.card-footer {
+  padding-bottom: 0px;
+  padding-top: 0px;
+
+  @include media-breakpoint-up(xs) {
+    font-size: 1em;
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding-top: 1%;
+  }
+
+  @include media-breakpoint-up(md) {
+    padding-top: 3%;
+  }
+
+}
+
+.card-block {
+  padding-bottom: 0px;
+  padding-right: 0px;
+
+  @include media-breakpoint-up(xs) {
+    font-size: 1em;
+    padding-top: 2%;
+  }
+
+  @include media-breakpoint-up(sm) {
+    font-size: 1.49997em;
+    padding-top: 5%;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.5em;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 1.5em;
+  }
+}
+
+.card-block > .card-text {
+  @include media-breakpoint-up(xs) {
+    padding-bottom: 1%;
+    margin-bottom: 0px;
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding-bottom: .67777em;
+  }
+}
+
+.card-footer > p {
+  margin: 0px;
+}
