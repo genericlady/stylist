@@ -16,10 +16,10 @@ class StylistsController < ApplicationController
         per(10)
 
     if query.nil? || query[:location].empty?
-     @markers = MapMarker.new_for_each(@stylists)
+     @markers = MapMarker.new_for_each_stylist(@stylists)
     else
      location_expression = LocationExpression.create(query)
-     @markers = MapMarker.new_for_each(@stylists, location_expression)
+     @markers = MapMarker.new_for_each_stylist(@stylists, location_expression)
     end
 
     respond_to do |format|
@@ -29,5 +29,8 @@ class StylistsController < ApplicationController
   end
 
   def show
+  end
+
+  def update
   end
 end
