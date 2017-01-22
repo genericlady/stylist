@@ -39,6 +39,7 @@ a.nav-link, a.navbar-brand {
 .main-container {
 	max-width: 66em;
   @include make-container();
+  padding: 0px;
 }
 
 .head-container {
