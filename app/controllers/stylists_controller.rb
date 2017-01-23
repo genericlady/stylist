@@ -1,3 +1,0 @@
-class StylistsController < ApplicationController
-
-end
