@@ -26,29 +26,13 @@
   </div>
   <div id="row profile-widget-services">
     <h4>Service List</h4>
-    <div class="create-service">
-      <div class="form-group">
-        <input class="form-control"
-               type="text"
-               placeholder="Service Name"
-               id="create-service-name">
-
-        <input class="form-control"
-               type="text"
-               placeholder="Description"
-               id="create-service-description">
-
-        <input class="form-control"
-               type="text"
-               placeholder="Price"
-               id="create-service-price">
-        <button type="submit" class="btn btn-primary">Create Service</button>
-
-      </div>
-    </div>
+    <%= render "services/new" %>
+    <%= render "services/index" %>
   </div>
   <div id="profile-widget-location">
     <h4>Locations</h4>
+    <%= render "locations/new" %>
+    <%= render "locations/index" %>
   </div>
 </div>
 <div class="col-sm-8">

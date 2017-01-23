@@ -1,0 +1,43 @@
+<div class="create-service form-group">
+  <%
+      description_options =
+      {
+        "class": "form-control",
+        "id": "create-service-description",
+        "placeholder": "Description",
+        "type": "text",
+      }
+
+      name_options =
+      {
+        "class": "form-control",
+        "id": "create-service-name",
+        "placeholder": "Name",
+        "type": "text",
+      }
+
+      price_options = 
+      {
+        "class": "form-control",
+        "id": "create-service-price",
+        "placeholder": "Price",
+        "type": "text",
+      }
+      service_field_options = { "class": "form-control" }
+    %>
+
+  <%= form_for current_user do |user_form| %>
+    <%=
+      user_form.fields_for :services, 
+        html: service_field_options do |service_fields| %>
+
+        <%= service_fields.text_field :name, name_options %>
+        <%= service_fields.text_field :description, description_options %>
+        <%= service_fields.text_field :price, price_options %>
+
+      <% end %>
+      <%= user_form.submit "Create Service", class: "btn btn-primary"  %>
+    <% end %>
+
+</div>
+
