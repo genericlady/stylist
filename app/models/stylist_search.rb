@@ -14,6 +14,7 @@ class StylistSearch
     else
       top_20
     end
+
   end
 
   def top_20
