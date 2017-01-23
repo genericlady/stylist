@@ -3,6 +3,8 @@ $red: #94090E;
 $light-red: lighten($red, 10%);
 $dark-red: darken($red, 10%);
 $white:  #fff !default;
+$light-green: #00AB2C;
+$ecto-green: #9AFF5A;
 
 .navbar-brand {
   @include media-breakpoint-up(md) {
@@ -11,4 +13,7 @@ $white:  #fff !default;
     width: 25%;
   }
 }
-
+a#dropdownMenuButton {
+  color: white;
+  &:hover { color: lighten($ecto-green, 17%); }
+}
