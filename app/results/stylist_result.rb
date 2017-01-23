@@ -41,13 +41,13 @@ class StylistResult
     true
   end
 
+  def full_name_string
+    stylist["first_name"] + " " + stylist["last_name"]
+  end
+
   private
   def stylist
     @stylist || {}
-  end
-
-  def full_name_string
-    stylist["first_name"] + " " + stylist["last_name"]
   end
 
   def path_to_stylist
