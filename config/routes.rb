@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'search',         to: 'results#index'
   get 'stylists',       to: 'stylists#index'
   get 'stylists/:id',   to: 'stylists#show'
+
+  resources :users, only: [:show, :update]
   
   root 'static_pages#home'
   
