@@ -8,7 +8,7 @@ class MapMarker
     end
   end
 
-  def self.create_stylist_markers(results, query)
+  def self.create_stylist_markers(results, query=nil)
     if query.nil? || query[:location].empty?
      MapMarker.new_for_each_stylist(results)
     else
@@ -17,12 +17,24 @@ class MapMarker
     end
   end
 
-  def self.create_service_markers(results, query)
+  def self.create_service_markers(results, query=nil)
     if query.nil? || query[:location].empty?
      MapMarker.new_for_each(@results)
     else
      location_expression = LocationExpression.create(query)
      MapMarker.new_for_each(@results, location_expression)
+    end
+  end
+
+  def self.new_from_user(user)
+    user.locations.reduce([]) do |markers, location|
+      label = user.first_name[0..1]
+      coords =
+        {
+          lat: location.latitude,
+          lng: location.longitude,
+        }
+      markers << { position: coords, label: label }
     end
   end
 
