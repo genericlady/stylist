@@ -1,4 +1,4 @@
-class StylistSearch
+class BeautyProviderSearch
   def initialize(query)
     @query = query
   end

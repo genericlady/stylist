@@ -9,18 +9,18 @@ class Search
     case query[:type]
     when /service/i
       service_results
-    when /stylist/i
-      stylist_results
+    when /beauty_provider/i
+      beauty_provider_results
     end
   end
 
   private
-  def stylist_results
-    StylistSearch.
+  def beauty_provider_results
+    BeautyProviderSearch.
       new(query).
       results.
       as_json(include: :locations).
-      map { |result| StylistResult.new(result) }
+      map { |result| BeautyProviderResult.new(result) }
    
   end
 
@@ -34,7 +34,7 @@ class Search
     #   new(query).
     #   results.
     #   as_json(include: :locations).
-    #   map { |result| StylistResult.new(result) }
+    #   map { |result| BeautyProviderResult.new(result) }
     #
 
     results = ServiceSearch.

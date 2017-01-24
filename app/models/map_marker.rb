@@ -1,19 +1,19 @@
 class MapMarker
   def self.to_markers(results, query)
     case query[:type]
-    when /stylist/i
-      create_stylist_markers(results, query)
+    when /beauty_provider/i
+      create_beauty_provider_markers(results, query)
     when /service/i
       create_service_markers(results, query)
     end
   end
 
-  def self.create_stylist_markers(results, query=nil)
+  def self.create_beauty_provider_markers(results, query=nil)
     if query.nil? || query[:location].empty?
-     MapMarker.new_for_each_stylist(results)
+     MapMarker.new_for_each_beauty_provider(results)
     else
      location_expression = LocationExpression.create(query)
-     MapMarker.new_for_each_stylist(results, location_expression)
+     MapMarker.new_for_each_beauty_provider(results, location_expression)
     end
   end
 
@@ -39,12 +39,12 @@ class MapMarker
   end
 
 
-  def self.new_for_each_stylist(stylists, expression = nil)
-    stylists.reduce([]) do |markers, stylist|
-      stylist.locations.each do |l|
+  def self.new_for_each_beauty_provider(beauty_providers, expression = nil)
+    beauty_providers.reduce([]) do |markers, beauty_provider|
+      beauty_provider.locations.each do |l|
         location = Location.new(l)
         if expression.nil? || location.full_address.match(expression)
-          label = stylist.full_name_string[0..1]
+          label = beauty_provider.full_name_string[0..1]
           coords =
             {
               lat: location.latitude,

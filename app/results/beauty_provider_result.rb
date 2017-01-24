@@ -1,9 +1,9 @@
-class StylistResult
+class BeautyProviderResult
   include ActionView::Helpers::TagHelper
   include Result::Base
 
-  def initialize(stylist_hash)
-    @stylist = stylist_hash
+  def initialize(beauty_provider_hash)
+    @beauty_provider = beauty_provider_hash
   end
 
   def image
@@ -11,7 +11,7 @@ class StylistResult
   end
 
   def title
-    content_tag(:a, full_name_string, href: path_to_stylist)
+    content_tag(:a, full_name_string, href: path_to_beauty_provider)
   end
 
   def subtitle
@@ -19,7 +19,7 @@ class StylistResult
   end
 
   def locations
-    stylist["locations"]
+    beauty_provider["locations"]
   end
 
   def print_locations
@@ -42,16 +42,16 @@ class StylistResult
   end
 
   def full_name_string
-    stylist["first_name"] + " " + stylist["last_name"]
+    beauty_provider["first_name"] + " " + beauty_provider["last_name"]
   end
 
   private
-  def stylist
-    @stylist || {}
+  def beauty_provider
+    @beauty_provider || {}
   end
 
-  def path_to_stylist
-    '/stylists/' + stylist["id"].to_s
+  def path_to_beauty_provider
+    '/beauty_providers/' + beauty_provider["id"].to_s
   end
 
 end

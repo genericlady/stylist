@@ -17,7 +17,7 @@ describe MapMarker do
       markers =
         MapMarker.
         new_for_each(stylists.as_json(include: :locations).
-        map { |result| StylistResult.new(result) })
+        map { |result| BeautyProviderResult.new(result) })
       expect(markers.length).to eq(3)
     end
   end
@@ -27,7 +27,7 @@ describe MapMarker do
       markers =
         MapMarker.
         new_for_each(stylists.as_json(include: :locations).
-        map { |result| StylistResult.new(result) }, /brooklyn\b/i)
+        map { |result| BeautyProviderResult.new(result) }, /brooklyn\b/i)
       expect(markers.length).to eq(2)
     end
   end
