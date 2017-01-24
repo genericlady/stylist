@@ -19,10 +19,10 @@ class MapMarker
 
   def self.create_service_markers(results, query=nil)
     if query.nil? || query[:location].empty?
-     MapMarker.new_for_each(@results)
+     MapMarker.new_for_each(results)
     else
      location_expression = LocationExpression.create(query)
-     MapMarker.new_for_each(@results, location_expression)
+     MapMarker.new_for_each(results, location_expression)
     end
   end
 

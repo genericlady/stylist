@@ -37,7 +37,7 @@ class Search
     #   map { |result| StylistResult.new(result) }
     #
 
-    ServiceSearch.
+    results = ServiceSearch.
       new(query).
       results.
       map { |result| ServiceResult.new(result) }

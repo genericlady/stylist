@@ -5,6 +5,7 @@ class ResultsController < ApplicationController
         new(query).
         results
 
+    # when the query is a service this is failing
     @markers = MapMarker.to_markers(@results, query)
   end
 
