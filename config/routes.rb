@@ -5,10 +5,10 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
     }
 
-  get 'locations',      to: 'locations#index'
-  get 'search',         to: 'results#index'
-  get 'stylists',       to: 'stylists#index'
-  get 'stylists/:id',   to: 'stylists#show'
+  get 'beauty_providers', to: 'beauty_providers#index'
+  get 'locations',        to: 'locations#index'
+  get 'search',           to: 'results#index'
+  get 'stylists/:id',     to: 'stylists#show'
 
   resources :users, only: [:show, :update]
   
