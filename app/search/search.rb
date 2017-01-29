@@ -4,8 +4,6 @@ class Search
   end
 
   def results
-    # if the serialized results have root keys denoting what they are then
-    # our result factory will know which new result to instantiate
     serialized_results.map { |result| ResultFactory.new_result(result) }
   end
 
@@ -17,7 +15,6 @@ class Search
     when /service/i
       serialized_services
     when /name/i
-      binding.pry
       serialized_providers
     end
   end
