@@ -1,7 +1,10 @@
 class Query
+  attr_accessor :location, :terms, :type
+
   def initialize(query)
-    @terms = query[:terms]
+    @terms    = query[:terms]
     @location = query[:location]
+    @type     = query[:type]
   end
 
   def to_s
@@ -13,8 +16,5 @@ class Query
       terms + " " + location
     end
   end
-
-  private
-  attr_reader :location, :terms
 
 end

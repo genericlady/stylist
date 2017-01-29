@@ -3,7 +3,7 @@ class BeautyProviderResult
   include Result::Base
 
   def initialize(beauty_provider_hash)
-    @beauty_provider = beauty_provider_hash
+    @beauty_provider = beauty_provider_hash["user"]
   end
 
   def image
