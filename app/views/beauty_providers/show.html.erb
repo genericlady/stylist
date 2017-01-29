@@ -28,44 +28,6 @@
 
 <div class="col-sm-8">
   <div class="row">
-    <ul class="nav nav-tabs float-xs-right" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active"
-           data-toggle="tab"
-           href="#Services"
-           role="tab">Services
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active"
-           data-toggle="tab"
-           href="#Schedule"
-           role="tab">Schedule
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active"
-           data-toggle="tab"
-           href="#Albums"
-           role="tab">Albums
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active"
-           data-toggle="tab"
-           href="#SocialFeed"
-           role="tab">Social Feed
-        </a>
-      </li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div class="tab-pane active" id="services" role="tabpanel">
-        <%= render "beauty_providers/service_list" %> 
-      </div>
-      <div class="tab-pane" id="schedule" role="tabpanel">...</div>
-      <div class="tab-pane" id="albums" role="tabpanel">...</div>
-      <div class="tab-pane" id="social-feed" role="tabpanel">...</div>
-    </div>
+    <%= render "beauty_providers/tab_list" %>
   </div>
 </div>
