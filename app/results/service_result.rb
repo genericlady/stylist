@@ -3,7 +3,7 @@ class ServiceResult
   include Result::Base
 
   def initialize(service_hash)
-    @service = service_hash
+    @service = service_hash["service"]
   end
 
   def image

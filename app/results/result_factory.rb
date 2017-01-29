@@ -1,12 +1,6 @@
 module ResultFactory
-  def self.run(results)
-    results.map do |result|
-      create_result(result)
-    end
-  end
 
-  private
-  def self.create_result(result)
+  def self.new_result(result_hash)
     case r.class
     when Service
       ServiceResult.new(result)
@@ -14,4 +8,12 @@ module ResultFactory
       BeautyProviderResult.new(result)
     end
   end
+
+  private
+  def user?(result_hash)
+  end
+
+  def service(result_hash)
+  end
+
 end
