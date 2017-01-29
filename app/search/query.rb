@@ -7,14 +7,15 @@ class Query
     @type     = query[:type]
   end
 
-  def to_s
+  def to_string
     if terms.empty?
-      location
+      query_string = location
     elsif location.empty?
-      terms
+      query_string = terms
     elsif
-      terms + " " + location
+      query_string = terms + " " + location
     end
+    query_string
   end
 
   def empty?
