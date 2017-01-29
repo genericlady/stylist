@@ -36,7 +36,7 @@ class User < ApplicationRecord
   def self.search(query)
     if query.empty?
       top20
-    elsif query.location_empty?
+    elsif query.location.empty?
       search_by_name(query.to_s)
     else
       search_by_name_and_location(query.to_s)
