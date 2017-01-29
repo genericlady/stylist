@@ -1,7 +1,7 @@
 class MapMarker
   def self.to_markers(results, query)
     case query[:type]
-    when /beauty_provider/i
+    when /name/i
       create_beauty_provider_markers(results, query)
     when /service/i
       create_service_markers(results, query)
