@@ -1,47 +1,21 @@
 class Search
-  attr_accessor :query
-
   def initialize(query)
-    @query = query
+    @query = Query.new(query)
   end
 
   def results
-    case query[:type]
-    when /service/i
-      service_results
-    when /beauty_provider/i
-      beauty_provider_results
-    end
+    serialized_service_results.
+      map { |result| ServiceResult.new(result) }
   end
 
   private
-  def beauty_provider_results
-    BeautyProviderSearch.
-      new(query).
-      results.
-      as_json(include: :locations).
-      map { |result| BeautyProviderResult.new(result) }
-   
+  attr_reader :query
+
+  def serialized_service_results
+    fetch_services.as_json(include: [:locations, :user])
   end
 
-  def service_results
-    #
-    # Once the Service models are added to the db
-    # then we can use the as_json call to include
-    # the associated locations
-    #
-    # ServiceSearch.
-    #   new(query).
-    #   results.
-    #   as_json(include: :locations).
-    #   map { |result| BeautyProviderResult.new(result) }
-    #
-
-    results = ServiceSearch.
-      new(query).
-      results.
-      map { |result| ServiceResult.new(result) }
-
+  def fetch_services
+    Service.includes(:user, :locations).search(query)
   end
-
 end

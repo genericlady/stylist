@@ -1,4 +1,5 @@
 class ServiceResult
+  include ActionView::Helpers::TagHelper
   include Result::Base
 
   def initialize(service_hash)
@@ -10,46 +11,26 @@ class ServiceResult
   end
 
   def title
-    'Service by Georganne Summers'
+    content_tag(
+      :a,
+      service["name"] + " by " + user_full_name,
+      href: path_to_user
+    )
   end
 
   def subtitle
-    "$190"
+    "$" + service["price"].to_s
   end
 
   def print_locations
-    'New York, NY | San Francisco, CA'
+    locations.
+      map do |l|
+        "#{l["city"]}, #{l["state"]}"
+      end.join(' | ')
   end
 
   def locations
-    [
-      {
-        "id"=>5,
-        "user_id"=>6,
-        "address1"=>"35 W Wacker Dr",
-        "address2"=>nil,
-        "city"=>"Chicago",
-        "state"=>"IL",
-        "zip"=>"60601",
-        "latitude"=>41.8865829,
-        "longitude"=>-87.6291883
-      },
-      {
-        "id"=>6,
-        "user_id"=>6,
-        "address1"=>"178 n 8th St",
-        "address2"=>"n 11211",
-        "city"=>"Brooklyn",
-        "state"=>"NY",
-        "zip"=>"11211",
-        "latitude"=>40.7179553,
-        "longitude"=>-73.95676019999999
-      }
-    ]
-    # service["locations"].
-    #   map do |l|
-    #     "#{l["city"]}, #{l["state"]}"
-    #   end.join(' | ')
+    service["locations"]
   end
 
   def rating
@@ -67,5 +48,23 @@ class ServiceResult
   private
   def service
     @service || {}
+  end
+
+  def user_full_name
+    service["user"]["first_name"] +
+    " " +
+    service["user"]["last_name"]
+  end
+
+  def link_to_user
+    content_tag(:a, user_full_name, href: path_to_user)
+  end
+
+  def path_to_user
+    '/users/' + user_id
+  end
+
+  def user_id
+    service["user"]["id"].to_s
   end
 end
