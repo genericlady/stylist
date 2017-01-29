@@ -1,12 +1,11 @@
 class ResultsController < ApplicationController
   def index
-    # Refactor into a factory
     @results =
         Search.
         new(query).
         results
 
-    @markers = MapMarker.to_markers(@results, query)
+    @markers = MapMarker.create_service_markers(@results, query)
   end
 
 end
