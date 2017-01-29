@@ -15,8 +15,8 @@ class Service < ActiveRecord::Base
                    }
 
   def self.search(query)
-    return top20 if query.to_s.empty?
-    search_by_name_and_description(query.to_s)
+    return top20 if query.empty?
+    search_by_name_and_description(query.to_string)
   end
 
   def self.top20
