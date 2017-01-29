@@ -37,9 +37,9 @@ class User < ApplicationRecord
     if query.empty?
       top20
     elsif query.location.empty?
-      search_by_name(query.to_s)
+      search_by_name(query.to_string)
     else
-      search_by_name_and_location(query.to_s)
+      search_by_name_and_location(query.to_string)
     end
   end
 
