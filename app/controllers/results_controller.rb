@@ -5,7 +5,7 @@ class ResultsController < ApplicationController
       new(query).
       results
 
-    @markers = MapMarker.create_service_markers(@results, query)
+    @markers = MapMarker.to_markers(@results, query)
   end
 
 end
