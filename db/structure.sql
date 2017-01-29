@@ -56,7 +56,7 @@ CREATE TABLE locations (
     address1 character varying(90) NOT NULL,
     address2 character varying(90),
     city character varying(90) NOT NULL,
-    state character varying(2) NOT NULL,
+    state character varying(15) NOT NULL,
     zip character varying(9) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -145,8 +145,7 @@ CREATE TABLE users (
     updated_at timestamp without time zone NOT NULL,
     first_name character varying,
     last_name character varying,
-    username character varying,
-    service_id integer
+    username character varying
 );
 
 
@@ -259,13 +258,6 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (re
 
 
 --
--- Name: index_users_on_service_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_users_on_service_id ON users USING btree (service_id);
-
-
---
 -- Name: index_users_on_username; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -301,14 +293,6 @@ CREATE INDEX users_lower_last_name ON users USING btree (lower((last_name)::text
 
 
 --
--- Name: users fk_rails_093eb6ba73; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY users
-    ADD CONSTRAINT fk_rails_093eb6ba73 FOREIGN KEY (service_id) REFERENCES services(id);
-
-
---
 -- Name: services fk_rails_51a813203f; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -322,6 +306,6 @@ ALTER TABLE ONLY services
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161011202802'), ('20161012010506'), ('20161122005746'), ('20170121200449'), ('20170122001939'), ('20170122002239');
+INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161011202802'), ('20161012010506'), ('20161122005746'), ('20170121200449'), ('20170122002239');
 
 
