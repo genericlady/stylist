@@ -5,8 +5,6 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
     }
 
-  get 'beauty_providers',     to: 'beauty_providers#index'
-  get 'beauty_providers/:id', to: 'beauty_providers#show'
   get 'locations',            to: 'locations#index'
   get 'search',               to: 'results#index'
 
