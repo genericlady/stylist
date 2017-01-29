@@ -1,0 +1,33 @@
+<div class="col-12 jumbotron">
+  <%= image_tag "haircut-emoji.png", 
+    {class: "bottom-left-profile-photo img-fluid img-thumbnail",
+     alt: "Responsive image"} %>
+</div>
+
+<div class="col-sm-4 profile-widgets">
+  <div id="row">
+    <h4>About Me</h4>
+    <p>
+    Name: Cindy Lauper
+    <br>
+    I have trained at the world famous blah blah blah.
+    My hurrcuts are fabulous and you will love your new look.
+    </p>
+  </div>
+  <div id="row profile-widget-services">
+    <h4>Service List</h4>
+    <%= render "services/new" %>
+    <%= render "services/index" %>
+  </div>
+  <div id="profile-widget-location">
+    <h4>Locations</h4>
+    <%= render "locations/new" %>
+    <%= render "locations/index" %>
+  </div>
+</div>
+
+<div class="col-sm-8">
+  <div class="row">
+    <%= render "beauty_providers/tab_list" %>
+  </div>
+</div>
