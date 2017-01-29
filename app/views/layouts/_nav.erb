@@ -15,17 +15,26 @@
         <span class="tcon-visuallyhidden">toggle navigation</span>
     </button>
 
-    <div class="search-form col-md-7">
+    <div class="search-form col-md-8">
       <form action="/search" class="search-form row">
-
-        <input class="navigation-search-terms col-md-5"
+        <div class="btn-group-wrapper col-md-4">
+          <div class="btn-group float-xs-right" data-toggle="buttons">
+            <label class="btn btn-primary active">
+              <input name="query[type]" type="radio" value="service" checked autocomplete="off">Service
+            </label>
+            <label class="btn btn-primary">
+              <input name="query[type]" type="radio" value="name" autocomplete="off">Name
+            </label>
+          </div>
+        </div>
+        <input class="navigation-search-terms col-md-4"
                type="text"
                id="search-terms"
                name="query[terms]"
                class="form-control input-lg"
                placeholder="Terms"/>
 
-        <input class="navigation-search-location col-md-3"
+        <input class="navigation-search-location col-md-2"
                type="text"
                placeholder="City, State"
                name="query[location]"
@@ -37,7 +46,7 @@
 
     </div><!-- ./col -->
 
-    <div class="nav-links col-md-3">
+    <div class="nav-links col-md-2">
       <%= render "layouts/nav-links" %>
     </div>
 
@@ -45,26 +54,7 @@
     <div class="col-xs-12 collapse navbar-collapse nav-links-collapsable" id="navbarSupportedContent">
       <div class="row">
         <div class="col-xs-10">
-          <form action="/search" class="row search-form-collapsable">
-            <input class="navigation-search-terms col-xs-12"
-                   type="text"
-                   id="search-terms"
-                   name="query[terms]"
-                   class="form-control input-lg"
-                   placeholder="Terms"/>
-
-            <input class="navigation-search-location col-xs-12"
-                   type="text"
-                   placeholder="City, State"
-                   name="query[location]"
-                   class="form-control input-lg"/>
-
-
-            <button class="btn navigation-search-btn col-xs-6"
-                    type="submit">Search</button>
-
-          </form> <!-- ./row -->
-
+          <!-- search form -->
         </div>
         <div class="col-xs-2">
         <%= render "layouts/nav-links" %>
