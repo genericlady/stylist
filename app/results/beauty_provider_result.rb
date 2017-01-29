@@ -51,7 +51,7 @@ class BeautyProviderResult
   end
 
   def path_to_beauty_provider
-    '/beauty_providers/' + beauty_provider["id"].to_s
+    '/users/' + beauty_provider["id"].to_s
   end
 
 end
