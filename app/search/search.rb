@@ -35,7 +35,7 @@ class Search
   end
 
   def provider_results
-    User.includes(:services, :locations).search_by_name_and_location(query.to_s)
+    User.includes(:services, :locations).search(query)
   end
 
   def mixed_search

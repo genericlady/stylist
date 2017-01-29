@@ -32,4 +32,18 @@ class User < ApplicationRecord
   def create_service(service)
     self.services.create(service)
   end
+
+  def self.search(query)
+    if query.empty?
+      top20
+    elsif query.location_empty?
+      search_by_name(query.to_s)
+    else
+      search_by_name_and_location(query.to_s)
+    end
+  end
+
+  def self.top20
+    User.all.limit(20)
+  end
 end

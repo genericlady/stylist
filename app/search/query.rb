@@ -17,4 +17,8 @@ class Query
     end
   end
 
+  def empty?
+    terms.empty? && location.empty?
+  end
+
 end
