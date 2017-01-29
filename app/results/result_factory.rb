@@ -1,19 +1,20 @@
 module ResultFactory
 
-  def self.new_result(result_hash)
-    case r.class
-    when Service
-      ServiceResult.new(result)
-    when User
+  def self.new_result(result)
+    if user?(result)
       BeautyProviderResult.new(result)
+    elsif service?(result)
+      ServiceResult.new(result)
     end
   end
 
   private
-  def user?(result_hash)
+  def self.service?(result)
+    !result["service"].nil?
   end
 
-  def service(result_hash)
+  def self.user?(result)
+    !result["user"].nil?
   end
 
 end
