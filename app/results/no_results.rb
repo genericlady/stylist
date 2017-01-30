@@ -1,5 +1,6 @@
 class NoResults
   include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::AssetTagHelper
   include Result::Base
 
   def initialize
@@ -7,7 +8,7 @@ class NoResults
   end
 
   def image
-    ''
+    "shrug-emoji.png"
   end
 
   def title
