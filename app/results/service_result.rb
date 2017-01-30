@@ -7,7 +7,7 @@ class ServiceResult
   end
 
   def image
-    '/some/url/to/default_professional.png'
+    "haircut-emoji.png"
   end
 
   def title

@@ -7,7 +7,7 @@ class BeautyProviderResult
   end
 
   def image
-    '/some/url/to/default_professional.png'
+    'head-massage-emoji.png'
   end
 
   def title

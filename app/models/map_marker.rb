@@ -1,5 +1,7 @@
 class MapMarker
   def self.to_markers(results, query)
+    return [] if results.first.class == NoResults
+
     case query[:type]
     when /name/i
       create_beauty_provider_markers(results, query)

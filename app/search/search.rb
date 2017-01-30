@@ -4,6 +4,7 @@ class Search
   end
 
   def results
+    return array_with_no_results if serialized_results.empty?
     serialized_results.map { |result| ResultFactory.new_result(result) }
   end
 
@@ -39,5 +40,9 @@ class Search
   end
 
   def mixed_search
+  end
+
+  def array_with_no_results
+    [NoResults.new]
   end
 end
