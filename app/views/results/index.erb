@@ -7,7 +7,10 @@
 <div class="col-xs-12 col-md-9 col-lg-8">
   <% @results.each do |r| %>
     <div class="card">
-      <%= image_tag "haircut-emoji.png", {class: "card-img-top col-xs-5 img-thumbnail", alt: "Card image cap"} %>
+      <%=
+        image_tag r.image,
+          { class: "card-img-top col-xs-5 img-thumbnail", alt: "Card image cap"}
+      %>
       <div class="card-block">
         <h4 class="card-title"><%= r.title %></h4>
         <h5 class="card-subtitle"><%= r.subtitle %></h5>

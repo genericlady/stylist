@@ -12,6 +12,10 @@ module Result
       raise "Define subtitle"
     end
 
+    def print_locations
+      raise "Define print_locations"
+    end
+
     def locations
       raise "Define locations"
     end
