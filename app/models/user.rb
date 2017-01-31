@@ -46,4 +46,8 @@ class User < ApplicationRecord
   def self.top20
     User.all.limit(20)
   end
+
+  def print_name
+    "foo foo"
+  end
 end
