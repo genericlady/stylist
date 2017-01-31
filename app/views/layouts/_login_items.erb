@@ -9,14 +9,14 @@
 <% if user_signed_in? %>
   <li class="login-helper nav-item">
     <div class="dropdown">
-      <a class="dropdown_menu_button"
-         id="dropdownMenuButton"
+      <i class="icon-user dropdown_menu_button"
+         id="dropdownMenuButton" 
          data-toggle="dropdown"
          aria-haspopup="true"
-         aria-expanded="false">
-        Menu
-      </a>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+         aria-expanded="false"
+        ></i>
+
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
         <%= link_to('Logout', destroy_user_session_path, logout_options) %>        
         <%= link_to "Settings", edit_user_registration_path(current_user), { class: "dropdown-item" } %>
       </div>

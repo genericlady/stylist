@@ -1,0 +1,29 @@
+<form action="/search" class="row">
+  <div class="btn-group-wrapper col-md-4">
+    <div class="btn-group float-xs-left float-md-right" data-toggle="buttons">
+      <label class="btn btn-primary active">
+        <input name="query[type]" type="radio" value="service" checked autocomplete="off">Service
+      </label>
+      <label class="btn btn-primary">
+        <input name="query[type]" type="radio" value="name" autocomplete="off">Name
+      </label>
+    </div>
+  </div>
+  <input class="navigation-search-terms col-md-4"
+         type="text"
+         id="search-terms"
+         name="query[terms]"
+         class="form-control input-lg"
+         placeholder="Terms"/>
+
+  <input class="navigation-search-location col-md-2"
+         type="text"
+         placeholder="City, State"
+         name="query[location]"
+         class="form-control input-lg"/>
+  <button class="btn navigation-search-btn col-md-2"
+          type="submit">Search</button>
+
+</form> <!-- ./row -->
+
+

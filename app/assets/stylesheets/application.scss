@@ -2,9 +2,11 @@
  *= require transformicons/transformicons
  *= require_tree .
  *= require_self
+ *= require entypo
  *= bootstrap-v4
  */
 
+@charset "UTF-8";
 @import "bootstrap";
 @import "bootstrap_variables";
 
@@ -83,7 +85,12 @@ a.nav-link, a.navbar-brand {
     }
 
     .search-form * { height: 2.31334em; }
+    .navigation-search-terms,
+    .navigation-search-location { height: 2.313334em }
     .nav-links > .navbar-nav { margin-top: .31em; }
+    .search-form-collapsable > form {
+     
+    }
 
     @media (max-width:53.1em) {
       @include make-col(12);
@@ -227,4 +234,8 @@ a.nav-link, a.navbar-brand {
 .btn-group-wrapper {
   padding-right: 1px;
   padding-left: 1px;
+}
+
+.icon-user.dropdown_menu_button {
+  color: white;
 }

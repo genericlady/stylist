@@ -15,6 +15,7 @@ gem 'geocoder'
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'kaminari'
 gem 'pundit'
+gem 'entypo-rails'
 
 group :development, :test do
   gem 'pry-rails'
