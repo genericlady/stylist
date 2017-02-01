@@ -1,9 +1,11 @@
-<div class="profile-header text-center" style="background-image: url(http://placehold.it/1086x448); ">
+<% present @user do |user_presenter| %>
+  <div class="profile-header text-center"
+       style="<%= user_presenter.cover_photo %>">
   <div class="container-fluid">
     <div class="container-inner">
-      <img class="rounded-circle media-object" src="../assets/haircut-emoji.png">
-      <h3 class="profile-header-user">Dave Gamache</h3>
-      <p class="profile-header-bio">I wish i was a little bit taller, wish i was a baller, wish i had a girl… also.</p>
+      <%= user_presenter.avatar %>
+      <%= user_presenter.full_name %>
+      <%= user_presenter.bio %>
     </div>
   </div>
   <nav class="profile-header-nav">
@@ -33,3 +35,4 @@
   </div>
 </div>
 
+<% end %>

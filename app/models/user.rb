@@ -50,4 +50,12 @@ class User < ApplicationRecord
   def print_name
     "foo foo"
   end
+
+  def url
+    ""
+  end
+
+  def avatar_image_name
+    ""
+  end
 end
