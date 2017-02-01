@@ -1,5 +1,6 @@
 class UserPresenter < BasePresenter
   presents :user
+  delegate :full_name, to: :user
 
   def cover_photo
     # "background-image: url(http://placehold.it/1086x448); "
@@ -12,8 +13,8 @@ class UserPresenter < BasePresenter
       html_safe
   end
 
-  def full_name
-    %Q(<h3 class="profile-header-user">Dave Gamache</h3>).html_safe
+  def print_name
+    %Q(<h3 class="profile-header-user">#{full_name}</h3>).html_safe
   end
 
   def bio
