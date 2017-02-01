@@ -1,4 +1,4 @@
-<div class="create-service form-group">
+<div class="card col-sm-6 col-md-4">
   <%
       description_options =
       {
@@ -27,17 +27,19 @@
     %>
 
   <%= form_for current_user do |user_form| %>
-    <%=
-      user_form.fields_for :services, 
-        html: service_field_options do |service_fields| %>
+    <%= user_form.fields_for :services, 
+      html: service_field_options do |service_fields| %>
 
-        <%= service_fields.text_field :name, name_options %>
-        <%= service_fields.text_field :description, description_options %>
-        <%= service_fields.text_field :price, price_options %>
-
-      <% end %>
-      <%= user_form.submit "Create Service", class: "btn btn-primary"  %>
+      <div class="thumbnail">
+        <img src="/assets/haircut-emoji.png" alt="100%x200" class="img-thumbnail" >
+        <div class="caption">
+          <h3 id="thumbnail-label">
+             <%= service_fields.text_field :name, name_options %></h3>
+          <p><%= service_fields.text_field :description, description_options %></p>
+          <p><%= service_fields.text_field :price, price_options %></p>
+          <p><%= user_form.submit "Create Service", class: "btn btn-primary"  %></p>
+        </div>
+      </div>
     <% end %>
-
+  <% end %>
 </div>
-
