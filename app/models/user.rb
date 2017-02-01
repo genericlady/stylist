@@ -3,9 +3,9 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
   has_many :locations
   has_many :services
-  accepts_nested_attributes_for :locations
 
   pg_search_scope :search_by_name,
                   :against => [:first_name, :last_name],
@@ -57,5 +57,9 @@ class User < ApplicationRecord
 
   def avatar_image_name
     ""
+  end
+
+  def full_name
+    first_name + " " + last_name
   end
 end
