@@ -8,6 +8,14 @@
  */
 
 @charset "UTF-8";
+@font-face {
+  font-family: toolkit-entypo;
+  src: url('toolkit-entypo.eot');
+  src: url('toolkit-entypo.eot?#iefix') format('embedded-opentype'),
+       url('toolkit-entypo.woff2') format('woff2'),
+       url('toolkit-entypo.woff') format('woff'),
+       url('toolkit-entypo.ttf') format('truetype');
+}
 @import "bootstrap";
 @import "bootstrap_variables";
 
@@ -240,3 +248,5 @@ a.nav-link, a.navbar-brand {
 .icon-user.dropdown_menu_button {
   color: white;
 }
+
+div.caption > p { margin: 3px; }
