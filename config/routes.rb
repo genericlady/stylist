@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   get 'search',               to: 'results#index'
 
   resources :users, only: [:show, :update]
-  
+  resources :users do 
+    resources :services
+  end
+
   root 'static_pages#home'
   
 end
