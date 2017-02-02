@@ -1,38 +1,39 @@
 <% present @user do |user_presenter| %>
   <div class="profile-header text-center"
        style="<%= user_presenter.cover_photo %>">
-  <div class="container-fluid">
-    <div class="container-inner">
-      <%= user_presenter.avatar %>
-      <%= user_presenter.full_name %>
-      <%= user_presenter.bio %>
-    </div>
+
+       <div class="container-fluid">
+         <div class="container-inner">
+           <%= user_presenter.avatar %>
+           <%= user_presenter.print_name %>
+           <%= user_presenter.bio %>
+         </div>
+       </div>
+
+       <nav class="profile-header-nav">
+         <ul class="nav nav-tabs justify-content-center">
+           <li class="nav-item active">
+             <a class="nav-link" data-toggle="tab" href="#services" role="tab">
+               Services
+             </a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" data-toggle="tab" href="#schedule" role="tab">
+               Schedule
+             </a>
+           </li>
+         </ul>
+       </nav>
+
   </div>
-  <nav class="profile-header-nav">
-    <ul class="nav nav-tabs justify-content-center">
-      <li class="nav-item active">
-        <a class="nav-link" data-toggle="tab" href="#services" role="tab">
-          Services
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#schedule" role="tab">
-          Schedule
-        </a>
-      </li>
-    </ul>
-  </nav>
-</div>
-<div class="tab-content">
+<% end %>
+
+<div class="tab-content col-12">
   <div class="tab-pane active" id="services" role="tabpanel">
-    <h4>Service List</h4>
-    <%= render "users/service_list" %> 
-    <%= render "services/new" %>
-    <%= render "services/index" %>
+    <%= render partial: "services/service_list", locals: { services: @user.services } %> 
   </div>
   <div class="tab-pane" id="schedule" role="tabpanel">
     <%= render "users/schedule" %> 
   </div>
 </div>
 
-<% end %>
