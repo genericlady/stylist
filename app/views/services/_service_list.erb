@@ -1,0 +1,23 @@
+<div class="row">
+  <% services.each do |service| %>
+    <div class="card col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <% present service, ServiceCardPresenter do |service_card_presenter| %>
+          <img src="/assets/haircut-emoji.png" alt="100%x200" class="img-thumbnail" >
+          <div class="caption">
+            <%= service_card_presenter.print_name %>
+            <%= service_card_presenter.print_description %>
+            <%= service_card_presenter.print_price %>
+            <%= service_card_presenter.print_rating %>
+            <%= service_card_presenter.print_total_votes %>
+            <%= service_card_presenter.buttons %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <% if current_user.id == @user.id %>
+      <%= render "services/new" %>
+    <% end %>
+  <% end %>
+</div>
