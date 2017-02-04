@@ -30,11 +30,8 @@ class ServiceCardPresenter < BasePresenter
 
   def buttons
     if owner?
-      %Q(<p>#{button_to_edit && button_to_delete}
-           <a href="#" class="btn btn-danger" role="button">Delete</a>
-         </p>).html_safe
+      %Q(<p>#{button_to_edit + button_to_delete}</p>).html_safe
     else
-      service_details_button
       %Q(<p>#{service_details_button}</p>).html_safe
     end
   end
@@ -44,7 +41,7 @@ class ServiceCardPresenter < BasePresenter
 
   private
   def service_details_button
-    class_styles = "btn btn-primary"
+    class_styles = "btn btn-primary card_button mr-1"
     options = { class: class_styles, role: "button" }
     path = user_service_path(service)
 
@@ -52,11 +49,17 @@ class ServiceCardPresenter < BasePresenter
   end
 
   def button_to_edit
+    class_styles = "btn btn-warning card_button mr-1"
+    options = { class: class_styles, role: "button" }
+    path = edit_user_service_path(service)
+
+    link_to('Edit', path, options)
   end
 
   def button_to_delete
-    class_styles = "btn btn-primary"
+    class_styles = "btn btn-danger card_button mr-1"
     options = { class: class_styles, role: "button", method: "delete" }
+    path = user_service_path(service)
 
     link_to "Delete", path, options
   end
