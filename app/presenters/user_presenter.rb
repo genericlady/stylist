@@ -17,7 +17,9 @@ class UserPresenter < BasePresenter
   end
 
   def card_profile_image
+    card_profile =
     %Q(<img class="card-profile-img" src="#{default_avatar_path}">).html_safe
+    link_to card_profile, user
   end
 
   def print_name
