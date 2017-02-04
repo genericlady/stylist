@@ -18,19 +18,12 @@
 }
 @import "bootstrap";
 @import "bootstrap_variables";
-
-$blue: #502BE4;
-// $red: #94090E;
-$red: #2E2324;
-$light-green: #00AB2C;
-$light-red: lighten($red, 10%);
-$dark-red: darken($red, 10%);
-$ecto-green: #9AFF5A;
+@import "beauty_pin_colors";
 
 a.nav-link, a.navbar-brand { 
   color: white;
-  &:hover { color: lighten($ecto-green, 17%); }
-  &:active { color: darken($ecto-green, 7%); }
+  &:hover { color: lighten($green, 17%); }
+  &:active { color: darken($green, 7%); }
 
 }
 
@@ -39,10 +32,10 @@ a.nav-link, a.navbar-brand {
   margin-top: 0px;
 	
 	&:hover { 
-    border-color: lighten($ecto-green, 17%); 
+    border-color: lighten($green, 17%); 
     .tcon-menu__lines {
-      background: lighten($ecto-green, 17%);
-      &::before, &::after { background: lighten($ecto-green, 17%) }
+      background: lighten($green, 17%);
+      &::before, &::after { background: lighten($green, 17%) }
     }
   }
 }

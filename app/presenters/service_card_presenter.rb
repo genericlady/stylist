@@ -30,7 +30,8 @@ class ServiceCardPresenter < BasePresenter
 
   def buttons
     if owner?
-      %Q(<p>#{button_to_edit + button_to_delete}</p>).html_safe
+      %Q(<p>#{service_details_button + button_to_edit + button_to_delete}</p>).
+        html_safe
     else
       %Q(<p>#{service_details_button}</p>).html_safe
     end
