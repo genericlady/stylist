@@ -1,0 +1,10 @@
+<div class="sidebar">
+<% present current_user do |user_presenter| %>
+
+  <%= render "sidebars/card_profile", { user_presenter: user_presenter } %>
+  <%= render "sidebars/about" %>
+  <%= render "sidebars/services" %>
+  <%= render "sidebars/photos", { user_presenter: user_presenter } %>
+
+<% end %>
+</div>

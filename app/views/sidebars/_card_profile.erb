@@ -1,0 +1,31 @@
+<div class="card card-profile mb-4">
+
+  <div class="card-header" style="<%= user_presenter.cover_photo %>"></div>
+  <div class="card-block text-center">
+    <%= user_presenter.card_profile_image %>
+
+    <h6 class="card-title">
+      <%= user_presenter.link_to_show %>
+    </h6>
+
+    <%= user_presenter.bio(class_name: "mb-4") %>
+
+    <ul class="card-menu">
+      <li class="card-menu-item">
+        <a href="#userModal" class="text-inherit" data-toggle="modal">
+          Reviews
+          <h6 class="my-0">120</h6>
+        </a>
+      </li>
+
+      <li class="card-menu-item">
+        <a href="#userModal" class="text-inherit" data-toggle="modal">
+          Photos
+          <h6 class="my-0">341</h6>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
