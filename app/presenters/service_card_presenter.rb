@@ -52,7 +52,7 @@ class ServiceCardPresenter < BasePresenter
   def button_to_edit
     class_styles = "btn btn-warning card_button mr-1"
     options = { class: class_styles, role: "button" }
-    path = edit_user_service_path(service)
+    path = edit_user_service_path(current_user, service)
 
     link_to('Edit', path, options)
   end
