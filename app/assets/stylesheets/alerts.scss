@@ -1,0 +1,12 @@
+@import "beauty_pin_colors";
+
+.alert.alert-warning.alert-dismissible {
+  background-color: lighten($green, 13%);
+  border-color: darken($green, 33%);
+  color: $black;
+
+  .alert-link { color: $black; }
+  span { color: darken($green, 33%); }
+}
+
+

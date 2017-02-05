@@ -1,0 +1,8 @@
+@import "beauty_pin_colors";
+
+.add-service { width: 100%; }
+.sidebar .card { padding: 0em .21em; }
+.services-card > div > h6 > small > ul > li > p { font-size: 1.23em; }
+.services-card > div > h6 > small > ul > li:nth-child(odd) {
+  background-color: lighten($light-biege, 6%);
+}
