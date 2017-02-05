@@ -16,8 +16,8 @@
       </div>
     </div>
 
-    <% if current_user.id == @user.id %>
-      <%= render "services/new" %>
-    <% end %>
+  <% end %>
+  <% if current_user.id == @user.id %>
+    <%= render "services/new" %>
   <% end %>
 </div>

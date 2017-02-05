@@ -13,7 +13,7 @@ class UserPresenter < BasePresenter
   end
 
   def default_avatar_path
-    "../assets/#{avatar_name}"
+    "/assets/#{avatar_name}"
   end
 
   def card_profile_image
