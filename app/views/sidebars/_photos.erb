@@ -1,0 +1,11 @@
+<div class="card visible-md-block visible-lg-block">
+  <div class="card-block">
+    <h6 class="mb-1 mt-1">Photos <small>· <a href="#">Edit</a></small></h6>
+    <div data-grid="images" data-target-height="150">
+      <% user_presenter.photo_thumbnails do |thumbnail| %>
+        <%= thumbnail %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
