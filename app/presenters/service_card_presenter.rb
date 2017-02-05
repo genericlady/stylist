@@ -44,7 +44,7 @@ class ServiceCardPresenter < BasePresenter
   def service_details_button
     class_styles = "btn btn-primary card_button mr-1"
     options = { class: class_styles, role: "button" }
-    path = user_service_path(service)
+    path = user_service_path(current_user, service)
 
     link_to('Details', path, options)
   end
@@ -60,7 +60,7 @@ class ServiceCardPresenter < BasePresenter
   def button_to_delete
     class_styles = "btn btn-danger card_button mr-1"
     options = { class: class_styles, role: "button", method: "delete" }
-    path = user_service_path(service)
+    path = user_service_path(current_user, service)
 
     link_to "Delete", path, options
   end

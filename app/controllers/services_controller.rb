@@ -10,6 +10,11 @@ class ServicesController < ApplicationController
   def new
   end
 
+  def index
+    @services = current_user.services
+    @user = current_user
+  end
+
   def update
     @service = current_user.services.find params[:id]
     @service.update (service_params)
