@@ -100,6 +100,7 @@ end
   user.locations.create(random_location)
   user.locations.create(locations.last)
   user.create_service(random_service)
+  user.bio = Faker::Hipster.paragraph(2, true, 4)
   user.save
 end
 
