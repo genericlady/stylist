@@ -1,6 +1,6 @@
 class UserPresenter < BasePresenter
   presents :user
-  delegate :full_name, to: :user
+  delegate :full_name, :bio, to: :user
 
   def cover_photo
     # "background-image: url(http://placehold.it/1086x448); "
@@ -27,15 +27,10 @@ class UserPresenter < BasePresenter
   end
 
   def bio(class_name: nil)
-    bio_text = <<-BIO
-      I wish i was a little bit taller, 
-      wish i was a baller, wish i had a girl… also.
-    BIO
-
     if class_name.nil?
-      %Q(<p>#{bio_text}</p>).html_safe
+      %Q(<p>#{bio}</p>).html_safe
     else
-      %Q(<p class="#{class_name}">#{bio_text}</p>).html_safe
+      %Q(<p class="#{class_name}">#{bio}</p>).html_safe
     end
   end
 

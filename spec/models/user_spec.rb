@@ -2,6 +2,9 @@ require 'rails_helper'
 require 'support/violate_check_constraint_matcher'
 
 describe User do
+  it { should have_many :services }
+  it { should have_many :locations }
+
   describe "username" do
     let(:user) {
       User.create!(email: "foo@example.com",
