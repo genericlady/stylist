@@ -145,7 +145,8 @@ CREATE TABLE users (
     updated_at timestamp without time zone NOT NULL,
     first_name character varying,
     last_name character varying,
-    username character varying
+    username character varying,
+    bio text
 );
 
 
@@ -306,6 +307,6 @@ ALTER TABLE ONLY services
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161011202802'), ('20161012010506'), ('20161122005746'), ('20170121200449'), ('20170122002239');
+INSERT INTO schema_migrations (version) VALUES ('20161008050128'), ('20161008153747'), ('20161008160549'), ('20161008175606'), ('20161011202802'), ('20161012010506'), ('20161122005746'), ('20170121200449'), ('20170122002239'), ('20170205223648');
 
 
