@@ -18,6 +18,7 @@ gem 'pundit'
 gem 'entypo-rails'
 
 group :development, :test do
+  gem 'guard-rspec', require: false
   gem 'pry-rails'
 	gem 'pry-coolline'
   gem 'byebug', platform: :mri
