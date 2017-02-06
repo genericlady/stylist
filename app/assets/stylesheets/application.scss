@@ -111,7 +111,7 @@ a.nav-link, a.navbar-brand {
       }
 
       .nav-links-collapsable {
-        display: none;
+        display: none !important;
       }
 
       .nav-links > .navbar-nav {

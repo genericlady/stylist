@@ -17,3 +17,5 @@ a#dropdownMenuButton {
   color: white;
   &:hover { color: lighten($ecto-green, 17%); }
 }
+
+.nav-row { width: 100%; }
