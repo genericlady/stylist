@@ -6,10 +6,15 @@ require 'rspec/rails'
 require 'support/factory_girl'
 require 'capybara/poltergeist'
 require 'shoulda/matchers'
+require 'capybara/rspec'
+require 'capybara/rails'
 
 Capybara.javascript_driver = :poltergeist
 Capybara.default_driver    = :poltergeist
 Capybara.default_max_wait_time = 5 # This is usually 2 seconds
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, timeout: 1.minute, phantomjs_options: ['--load-images=no'])
+end
 
 ActiveRecord::Migration.maintain_test_schema!
 

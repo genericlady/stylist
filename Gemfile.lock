@@ -271,6 +271,7 @@ DEPENDENCIES
   bootstrap (~> 4.0.0.alpha5)
   bower-rails
   byebug
+  capybara
   coffee-rails (~> 4.2)
   database_cleaner
   devise
