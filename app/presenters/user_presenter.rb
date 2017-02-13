@@ -26,7 +26,7 @@ class UserPresenter < BasePresenter
     %Q(<h3 class="profile-header-user">#{full_name}</h3>).html_safe
   end
 
-  def bio(class_name: nil)
+  def print_bio(class_name: nil)
     if class_name.nil?
       %Q(<p>#{bio}</p>).html_safe
     else
