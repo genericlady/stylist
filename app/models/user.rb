@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :locations
   has_many :services
+  
+  accepts_nested_attributes_for :locations, :services
 
   pg_search_scope :search_by_name,
                   :against => [:first_name, :last_name],
