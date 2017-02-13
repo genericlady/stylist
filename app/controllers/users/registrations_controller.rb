@@ -13,7 +13,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
+
     coordinates = Geocoder.coordinates(location_params)
+
     resource.locations.first.latitude = coordinates.first
     resource.locations.first.longitude = coordinates.last
     resource.save
@@ -62,26 +64,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def sign_up_params
-    params.require(:user).
-           permit(
-             :first_name,
-             :last_name,
-             :email,
-             :password,
-             :password_confirmation,
-             {
-               locations_attributes: 
-               [
-                 :address1,
-                 :address2,
-                 :city,
-                 :state,
-                 :zip,
-               ]
-             }
-           )
-  end
 
   def location_params
     [
