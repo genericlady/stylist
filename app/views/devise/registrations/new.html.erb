@@ -1,85 +1,52 @@
-<article class="new-user-registration col-md-10 offset-md-2">
-<h2 class="col-12" >Sign up</h2>
+<div class="container-fluid container-fill-height">
+  <div class="container-content-middle">
+    <%= form_for(resource,
+                 as: resource_name,
+                 url: registration_path(resource_name),
+                 html: {class: "mx-auto text-center app-login-form"}) do |f| %>
+      <%= devise_error_messages! %>
 
-<%= form_for(resource,
-             as: resource_name,
-             url: registration_path(resource_name),
-             html: {class: "col-12"}) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="form-group">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name, autofocus: true, class: "form-control" %>
+      </div>
 
-  <div class="row">
-    <div class="col-md-4 form-group">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, class: "form-control" %>
-    </div>
-
-    <div class="col-md-4 form-group">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name, class: "form-control" %>
-    </div>
-
-    <div class="col-md-4 form-group">
-    </div>
-
-    <div class="col-md-4 form-group">
+      <div class="form-group">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, class: "form-control" %>
-    </div>
-
-  </div>
-
-
-  <%= f.fields_for :locations do |location_fields| %>
-    <div class="row">
-      <div class="col-md-4 form-group">
-      <%= location_fields.label :address1 %><br />
-      <%= location_fields.text_field :address1, class: "form-control"  %><br />
       </div>
 
-      <div class="col-md-4 form-group">
-      <%= location_fields.label :address2 %><br />
-      <%= location_fields.text_field :address2, class: "form-control" %><br />
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-3 form-group">
-      <%= location_fields.label :city %><br />
-      <%= location_fields.text_field :city, class: "form-control" %><br />
-      </div>
-
-      <div class="col-md-2 form-group">
-      <%= location_fields.label :state %><br />
-      <%= location_fields.text_field :state, class: "form-control" %><br />
-      </div>
-
-      <div class="col-md-2 form-group">
-      <%= location_fields.label :zip %><br />
-      <%= location_fields.text_field :zip, class: "form-control" %><br />
-      </div>
-    </div>
-  <% end %>
-
-  <div class="row">
-    <div class="col-md-5 form-group">
+      <div class="form-group mb-3">
       <%= f.label :password %>
       <% if @validatable %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
       <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-    </div>
+      </div>
 
-    <div class="col-md-5 form-group">
+      <div class="form-group mb-3">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off",
         class: "form-control" %>
-    </div>
-  </div>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up", class: "btn btn-primary btn-lg" %>
-    <%= link_to "Already have an account? Log in", new_session_path(resource_name) %>
-  </div>
-<% end %>
+      <div class="form-group">
+      <%= f.label :zipcode %><br />
+      <%= f.text_field :zipcode, autofocus: true, class: "form-control" %>
+      </div>
 
-</article>
+      <div class="mb-5">
+        <%= f.submit "Sign up", class: "btn btn-primary btn-lg" %>
+        <%= link_to "Log in", new_session_path(resource_name),
+            {class: "btn btn-lg btn-secondary"} %>
+      </div>
+
+      <footer class="screen-login">
+        <a href="#" class="text-muted">Forgot password</a>
+      </footer>
+    <% end %>
+  </div>
+</div>
+

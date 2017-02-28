@@ -24,6 +24,12 @@ class User < ApplicationRecord
                     locations: [:city, :state]
                   }
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :zipcode, presence: true
+  validates :zipcode, length: { in: 5..10 }
+  validates :zipcode, format: { with: /\d{5}-\d{4}|\d{9}|\d{5}/ }
+
   def print_locations
     cities_and_states = locations.map do |l|
       l.city + " " + l.state

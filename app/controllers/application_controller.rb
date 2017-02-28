@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-      user_params.permit(:first_name, :last_name, :password, :password_confirmation, :email, {locations_attributes: [:address1, :address1, :city, :state, :zip]})
+      user_params.permit(:first_name, :last_name, :password, :password_confirmation, :email, :zipcode, {locations_attributes: [:address1, :address1, :city, :state, :zip]})
     end
   end
 end
