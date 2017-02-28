@@ -13,11 +13,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
-
-    coordinates = Geocoder.coordinates(location_params)
-
-    resource.locations.first.latitude = coordinates.first
-    resource.locations.first.longitude = coordinates.last
     resource.save
 
     yield resource if block_given?
@@ -34,7 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      respond_with resource
+      respond_with resource, location: new_user_registration_path
     end
   end
 
@@ -64,14 +59,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-
-  def location_params
-    [
-     sign_up_params[:locations_attributes]["0"][:address1],
-     sign_up_params[:locations_attributes]["0"][:city],
-     sign_up_params[:locations_attributes]["0"][:state]
-    ].compact.join(", ")
-  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
