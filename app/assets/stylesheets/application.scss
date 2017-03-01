@@ -248,3 +248,13 @@ div.caption > p { margin: 3px; }
 .card .card-block { padding: 0px; }
 .card .card-block ul li { font-size: .8em; }
 
+.has-error .form-control {
+  border: 1px solid $red;
+}
+
+.error-messages,
+.has-feedback label {
+  color: $red;
+  padding: 0px;
+  margin: 0px;
+}
