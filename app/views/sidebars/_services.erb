@@ -1,22 +1,23 @@
 <div class="card visible-md-block visible-lg-block mb-4 services-card">
   <div class="card-block">
     <h6 class="mb-1 mt-1">
-      <%= link_to "Services", user_services_path(current_user) %> <small>
+      <%= link_to "Services", user_services_path(current_user) %>
+    </h6>
     <ul class="mt-1 list-unstyled list-spaced text-large text-left">
-    <% current_user.services.each do |service| %>
+      <% current_user.services.each do |service| %>
+        <li>
+          <p>
+          <%= link_to service.name, user_service_url(current_user, service) %> - 
+          <%= service.description %> 
+          <%= service.price %></p>
+        </li>
+      <% end %>
       <li>
-        <p>
-        <%= link_to service.name, user_service_url(current_user, service) %> - 
-        <%= service.description %> 
-        <%= service.price %></p>
+        <a href="<%= new_user_service_path(current_user) %>">
+          <button class="btn btn-sm btn-primary add-service">
+            Add Service
+          </button></a>
       </li>
-    <% end %>
-    <li>
-      <a href="<%= new_user_service_path(current_user) %>">
-      <button class="btn btn-sm btn-primary add-service">
-        Add Service
-      </button></a>
-    </li>
     </ul>
   </div>
 </div>
