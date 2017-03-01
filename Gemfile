@@ -16,6 +16,7 @@ gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'kaminari'
 gem 'pundit'
 gem 'entypo-rails'
+gem "paperclip", "~> 5.0.0"
 
 group :development, :test do
   gem 'guard-rspec', require: false
