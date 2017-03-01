@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  enum role: [:normal, :provider, :admin]
   include PgSearch
 
   devise :database_authenticatable, :registerable,
@@ -69,5 +70,9 @@ class User < ApplicationRecord
 
   def full_name
     first_name + " " + last_name
+  end
+
+  def guest?
+    persisted?
   end
 end

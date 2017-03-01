@@ -148,7 +148,8 @@ CREATE TABLE users (
     username character varying,
     bio text,
     middle_name character varying,
-    zipcode character varying(10)
+    zipcode character varying(10),
+    role integer
 );
 
 
@@ -321,6 +322,7 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170122002239'),
 ('20170205223648'),
 ('20170213220930'),
-('20170228155113');
+('20170228155113'),
+('20170301145003');
 
 
