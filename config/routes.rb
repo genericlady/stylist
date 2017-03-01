@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get 'locations',            to: 'locations#index'
   get 'search',               to: 'results#index'
+  get 'provider_signup',      to: 'providers#new'
 
   resources :users, only: [:show, :update]
   resources :users do 
