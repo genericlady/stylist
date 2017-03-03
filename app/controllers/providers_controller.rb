@@ -12,12 +12,8 @@ class ProvidersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @license = @user.licenses.new
-    binding.pry
-    if @user.update_attributes(user_params)
-      render 'new'
-    else
-      render 'edit'
-    end
+    @user.update_attributes(user_params)
+    render 'new'
   end
 
 end
