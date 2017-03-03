@@ -1,0 +1,18 @@
+development:
+  access_key_id: <%= ENV.fetch('BEAUTYPIN_S3_ID') %>
+  secret_access_key: <%= ENV.fetch('BEAUTYPIN_S3_SECRET') %>
+  bucket: beautypin-development
+  s3_region:  us-east-1
+
+test:
+  access_key_id: <%= ENV.fetch('BEAUTYPIN_S3_ID') %>
+  secret_access_key: <%= ENV.fetch('BEAUTYPIN_S3_SECRET') %>
+  bucket: beautypin-test
+  s3_region: us-east-1
+
+production:
+  access_key us-east-1_id: <%= ENV.fetch('BEAUTYPIN_S3_ID') %>
+  secret_acc us-east-1ess_key: <%= ENV.fetch('BEAUTYPIN_S3_SECRET') %>
+  bucket: be us-east-1autypin-production
+  s3_region: us-east-1
+
