@@ -1,6 +1,6 @@
 class UserPresenter < BasePresenter
   presents :user
-  delegate :full_name, :bio, to: :user
+  delegate :first_name, :last_name, :bio, to: :user
 
   def cover_photo
     # "background-image: url(http://placehold.it/1086x448); "
@@ -26,16 +26,12 @@ class UserPresenter < BasePresenter
     %Q(<h3 class="profile-header-user">#{full_name}</h3>).html_safe
   end
 
-  def print_bio(class_name: nil)
-    if class_name.nil?
-      %Q(<p>#{bio}</p>).html_safe
-    else
-      %Q(<p class="#{class_name}">#{bio}</p>).html_safe
-    end
+  def print_bio
+    %Q(<p class="profile-header-bio">#{bio}</p>)
   end
 
   def link_to_show
-    %Q(<a class="text-inherit" href="/">#{full_name}</a>).html_safe
+    %Q(<a class="text-inherit" href="/">#{full_name}</a>)
   end
 
   def photo_thumbnails(&block)
@@ -67,16 +63,16 @@ class UserPresenter < BasePresenter
   end
 
   private
-  def h
-    @template
-  end
-
   def avatar_name
     if user.avatar_image_name.present?
       user.avatar_image_name
     else
       "haircut-emoji.png"
     end
+  end
+
+  def full_name
+    first_name + " " + last_name
   end
 end
 
