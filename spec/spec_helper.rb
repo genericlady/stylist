@@ -1,4 +1,9 @@
 RSpec.configure do |config|
+  # deletes test_file directory for paperclip
+  config.after(:suite) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+  end
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
     expectations.syntax = [:expect]
