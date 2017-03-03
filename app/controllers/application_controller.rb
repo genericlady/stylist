@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-
   private
   def query
     permitted_query_params[:query] || empty_stylist_query
@@ -26,7 +25,22 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-      user_params.permit(:first_name, :last_name, :password, :password_confirmation, :email, :zipcode, {locations_attributes: [:address1, :address1, :city, :state, :zip]})
+      user_params.permit(:first_name, :last_name, :password, :password_confirmation, :email, :zipcode, :identification, :selfie, {locations_attributes: [:address1, :address1, :city, :state, :zip]})
     end
   end
+
+  def user_params
+    params.
+      require(:user).
+      permit(
+        :name,
+        :email,
+        :password,
+        :password_confirmation,
+        :identification,
+        :selfie,
+        licenses_attributes: [ :image, :expiration ]
+    )
+  end
+
 end
