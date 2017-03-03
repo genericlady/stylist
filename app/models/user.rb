@@ -5,10 +5,28 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_attached_file :identification, 
+                     styles: { medium: "300x300>", thumb: "100x100>" },
+                     default_url: "/images/:style/missing.png",
+                     storage: :s3,
+                     s3_credentials: Proc.new{ |a| a.instance.s3_credentials }
+
+  validates_attachment_content_type :identification, content_type: /\Aimage\/.*\z/
+
+  has_attached_file :selfie, 
+                     styles: { medium: "300x300>", thumb: "100x100>" },
+                     default_url: "/images/:style/missing.png",
+                     storage: :s3,
+                     s3_credentials: Proc.new{ |a| a.instance.s3_credentials }
+
+  validates_attachment_content_type :selfie, content_type: /\Aimage\/.*\z/
+
+
+  has_many :licenses
   has_many :locations
   has_many :services
   
-  accepts_nested_attributes_for :locations, :services
+  accepts_nested_attributes_for :locations, :services, :licenses
 
   pg_search_scope :search_by_name,
                   :against => [:first_name, :last_name],
@@ -68,11 +86,8 @@ class User < ApplicationRecord
     ""
   end
 
-  def full_name
-    first_name + " " + last_name
-  end
-
   def guest?
     persisted?
   end
+
 end
