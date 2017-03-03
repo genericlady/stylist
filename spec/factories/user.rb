@@ -8,6 +8,7 @@ FactoryGirl.define do
     last_name { Faker::Name.last_name }
     username { Faker::Internet.user_name }
     password '1234567890'
+    zipcode '10014'
     email
 
     factory :bob_from_brooklyn do
