@@ -13,28 +13,70 @@
   <div class="card">
     <div class="card-block">
       <div class="card-text p-2">
-        We need 3 things from you. cosmetology/esthitician license, legal identification  (state id / drivers license / passport) and a photo of you with that same piece of identification.
+        legal identification  (state id / drivers license / passport) and a photo of you with that same piece of identification.
       </div>
-      <form>
-        <div class="form-group">
-          <label for="license">License</label>
-          <input type="file" class="form-control-file" id="license" aria-describedby="fileHelp">
-          <small id="fileHelp" class="form-text text-muted">Snap a clear picture with your phone or scan it in.</small>
-        </div>
+      <%= form_for @user,
+        url: provider_path(@user.id),
+        html: { multipart: true } do |form| %>
 
         <div class="form-group">
           <label for="identification">Identification</label>
-          <input type="file" class="form-control-file" id="identification" aria-describedby="fileHelp">
-          <small id="fileHelp" class="form-text text-muted">Snap a clear picture with your phone or scan it in.</small>
+          <%= form.
+            file_field :identification,
+            class: "form-control-file",
+            id: "identification",
+            aria_describedby: "fileHelp" %>
+
+          <small id="fileHelp" class="form-text text-muted">
+            Snap a clear picture with your phone or scan it in.
+          </small>
+
         </div>
 
         <div class="form-group">
           <label for="selfie">Selfie with identification</label>
-          <input type="file" class="form-control-file" id="selfie" aria-describedby="fileHelp">
-          <small id="fileHelp" class="form-text text-muted">Take a selfie of yourself with the identification you have uploaded. We need to ensure it's actually you registering for an account.</small>
+          <%= form.
+            file_field :selfie,
+            class: "form-control-file",
+            id: "selfie",
+            aria_describedby: "fileHelp" %>
+
+          <small id="fileHelp" class="form-text text-muted">Snap a clear picture with your phone and make sure the identification used is held up next to your face.</small>
         </div>
 
-      </form>
+        <%= form.fields_for @license,
+          html: { multipart: true } do |builder| %>
+
+        <div class="form-group">
+          <label for="license">
+          cosmetology / esthitician license / any relevant license 
+          </label>
+
+          <%= builder.
+            file_field :image,
+            class: "form-control-file",
+            id: "image",
+            aria_describedby: "fileHelp" %>
+
+          <small id="fileHelp" class="form-text text-muted">
+            Scan or snap a photo of your cosmetology / esthiology license.
+          </small>
+
+          <%= builder.
+            text_field :expiration,
+            class: "form-control-text",
+            id: "expiration",
+            aria_describedby: "expirationHelp" %>
+ 
+          <small id="expirationHelp" class="form-text text-muted">
+            Include the expiration date of the license.
+          </small>
+        </div>
+        <% end %>
+
+        <%= form.submit value: "Submit", class: "btn btn-lg btn-primary" %>
+      <% end %>
+
     </div>
   </div>
 
