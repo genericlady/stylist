@@ -17,6 +17,7 @@ gem 'kaminari'
 gem 'pundit'
 gem 'entypo-rails'
 gem "paperclip", "~> 5.0.0"
+gem 'aws-sdk'
 
 group :development, :test do
   gem 'guard-rspec', require: false
