@@ -9,9 +9,12 @@ Rails.application.routes.draw do
   get 'search',               to: 'results#index'
   get 'provider_signup',      to: 'providers#new'
 
+  resources :providers, only: [:edit, :new, :update]
+
   resources :users, only: [:show, :update]
   resources :users do 
     resources :services
+    resources :licenses
   end
 
   root 'static_pages#home'

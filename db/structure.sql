@@ -47,6 +47,42 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
+-- Name: licenses; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE licenses (
+    id integer NOT NULL,
+    expiration character varying,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    image_file_name character varying,
+    image_content_type character varying,
+    image_file_size integer,
+    image_updated_at timestamp without time zone
+);
+
+
+--
+-- Name: licenses_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE licenses_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: licenses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE licenses_id_seq OWNED BY licenses.id;
+
+
+--
 -- Name: locations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -149,7 +185,15 @@ CREATE TABLE users (
     bio text,
     middle_name character varying,
     zipcode character varying(10),
-    role integer
+    role integer,
+    identification_file_name character varying,
+    identification_content_type character varying,
+    identification_file_size integer,
+    identification_updated_at timestamp without time zone,
+    selfie_file_name character varying,
+    selfie_content_type character varying,
+    selfie_file_size integer,
+    selfie_updated_at timestamp without time zone
 );
 
 
@@ -170,6 +214,13 @@ CREATE SEQUENCE users_id_seq
 --
 
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: licenses id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY licenses ALTER COLUMN id SET DEFAULT nextval('licenses_id_seq'::regclass);
 
 
 --
@@ -202,6 +253,14 @@ ALTER TABLE ONLY ar_internal_metadata
 
 
 --
+-- Name: licenses licenses_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY licenses
+    ADD CONSTRAINT licenses_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: locations locations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -231,6 +290,13 @@ ALTER TABLE ONLY services
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_licenses_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_licenses_on_user_id ON licenses USING btree (user_id);
 
 
 --
@@ -323,6 +389,10 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170205223648'),
 ('20170213220930'),
 ('20170228155113'),
-('20170301145003');
+('20170301145003'),
+('20170301184041'),
+('20170301184055'),
+('20170301235149'),
+('20170302001615');
 
 

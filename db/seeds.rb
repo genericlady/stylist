@@ -95,8 +95,10 @@ end
     username: "#{Faker::Internet.user_name}#{i}",
     password: Faker::Internet.password(10),
     email: Faker::Internet.user_name + i.to_s +
-    "@#{Faker::Internet.domain_name}"
+    "@#{Faker::Internet.domain_name}",
+    zipcode: "10014"
   )
+
   user.locations.create(random_location)
   user.locations.create(locations.last)
   user.create_service(random_service)
