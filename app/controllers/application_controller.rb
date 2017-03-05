@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
+  def get_user
+    User.find(params[:id])
+  end
+
+  def create_user_license
+    @user.licenses.create user_license_params[:license]
+  end
+
   def query
     permitted_query_params[:query] || empty_stylist_query
   end
@@ -39,8 +47,30 @@ class ApplicationController < ActionController::Base
         :password_confirmation,
         :identification,
         :selfie,
-        licenses_attributes: [ :image, :expiration ]
+        licenses_attributes: [ 
+          :image,
+          :expiration,
+          :full_name,
+          :number,
+          :state,
+          :license_type,
+        ]
     )
+  end
+
+  def user_license_params
+    params.
+      require(:user).
+      permit(
+        license: [
+        :image,
+        :expiration,
+        :full_name,
+        :number,
+        :state,
+        :license_type,
+        ]
+      )
   end
 
 end
