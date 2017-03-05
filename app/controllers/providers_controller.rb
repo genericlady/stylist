@@ -5,14 +5,15 @@ class ProvidersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = get_user
     @license = @user.licenses.new
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = get_user
     @license = @user.licenses.new
     @user.update_attributes(user_params)
+    create_user_license
     render 'new'
   end
 
