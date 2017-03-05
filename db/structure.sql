@@ -59,7 +59,12 @@ CREATE TABLE licenses (
     image_file_name character varying,
     image_content_type character varying,
     image_file_size integer,
-    image_updated_at timestamp without time zone
+    image_updated_at timestamp without time zone,
+    full_name character varying,
+    number character varying,
+    state character varying,
+    type character varying,
+    license_type character varying
 );
 
 
@@ -393,6 +398,11 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170301184041'),
 ('20170301184055'),
 ('20170301235149'),
-('20170302001615');
+('20170302001615'),
+('20170304201132'),
+('20170304201147'),
+('20170304201203'),
+('20170304201211'),
+('20170304214803');
 
 
