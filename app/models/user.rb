@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_attached_file :identification, 
                      styles: { medium: "300x300>", thumb: "100x100>" },
-                     default_url: "/images/:style/missing.png",
+                     default_url: "/images/missing-image.png",
                      storage: :s3,
                      s3_credentials: Proc.new{ |a| a.instance.s3_credentials }
 
@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   has_attached_file :selfie, 
                      styles: { medium: "300x300>", thumb: "100x100>" },
-                     default_url: "/images/:style/missing.png",
+                     default_url: "/images/missing-image.png",
                      storage: :s3,
                      s3_credentials: Proc.new{ |a| a.instance.s3_credentials }
 
