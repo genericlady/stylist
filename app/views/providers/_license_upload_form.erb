@@ -1,0 +1,73 @@
+<h1 class="text-center">Add a license</h1>
+
+<div class="card new-license mb-3">
+  <div class="card-block">
+    <div class="card-text pb-2">
+      <label class="mb-0" for="license">
+        cosmetology / esthitician license / any relevant license 
+      </label>
+
+      <small id="fileHelp" class="form-text text-muted">
+        We just need some information from you so we can validate your 
+        license(s).
+      </small>
+    </div>
+
+    <%= form_for @user, url: provider_path(@user.id) do |user_form| %>
+
+      <%= user_form.fields_for @license do |license_fields| %>
+
+        <div class="form-group">
+          <div>
+            <%= license_fields.label :type_of_license, class: "mb-0" %>
+          </div>
+          <%= license_fields.
+            text_field :license_type,
+            class: "form-control-text",
+            id: "license_type",
+            aria_describedby: "licenseType" %>
+        </div>
+
+        <div class="form-group">
+          <div>
+          <%= license_fields.label :full_name_on_license, class: "mb-0" %>
+          </div>
+          <%= license_fields.
+            text_field :full_name,
+            class: "form-control-text",
+            id: "fullName",
+            aria_describedby: "fullName" %>
+        </div>
+
+        <div class="form-group">
+          <div>
+          <%= license_fields.label :state_issued, class: "mb-0" %>
+          </div>
+          <%= license_fields.
+            text_field :state,
+            class: "form-control-text",
+            id: "state",
+            aria_describedby: "state" %>
+        </div>
+
+        <div class="form-group">
+          <div>
+          <%= license_fields.label :number_of_license, class: "mb-0" %>
+          </div>
+          <%= license_fields.
+            text_field :number,
+            class: "form-control-text",
+            id: "number",
+            aria_describedby: "number" %>
+        </div>
+
+      <% end %>
+      <%= user_form.submit value: "Create", class: "btn btn-lg btn-primary" %>
+    <% end %>
+
+    <div class="card-text">There is a fee associated with this verification service of 5$.
+    </div>
+  </div>
+</div>
+
+

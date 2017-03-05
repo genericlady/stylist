@@ -1,0 +1,33 @@
+<h1 class="text-center">Identification</h1>
+<div class="card identification mb-3">
+  <div class="card-block">
+
+    <div class="card-text p-2">
+      legal identification  (state id / drivers license / passport)
+    </div>
+
+    <img class="card-img-top provider-signup-img"
+         src=<%= @user.identification.url %>
+         alt="Identification Image">
+
+    <%= form_for @user,
+      url: provider_path(@user.id),
+      html: { multipart: true } do |form| %>
+
+      <div class="form-group">
+        <label for="identification">Identification</label>
+        <%= form.
+          file_field :identification,
+          class: "form-control-file",
+          id: "identification",
+          aria_describedby: "fileHelp" %>
+
+        <small id="fileHelp" class="form-text text-muted">
+          Snap a clear picture with your phone or scan it in
+        </small>
+
+      </div>
+      <%= form.submit value: "Upload", class: "btn btn-lg btn-primary" %>
+    <% end %>
+  </div>
+</div>

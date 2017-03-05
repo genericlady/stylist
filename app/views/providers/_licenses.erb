@@ -1,0 +1,16 @@
+<h1 class="text-center">Licenses</h1>
+
+<div class="card licenses mb-3">
+    <% if @user.licenses.length > 1 %>
+      <% @user.licenses.each do |license| %>
+  <div class="card-block">
+        <p><%= license.type %></p>
+        <p><%= license.full_name %></p>
+        <p><%= license.number %></p>
+        <p><%= license.state %></p>
+  </div>
+      <% end %>
+    <% else %>
+      <h3>No Licenses have been added yet</h3>
+    <% end %>
+</div>
