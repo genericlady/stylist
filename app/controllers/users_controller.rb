@@ -4,7 +4,4 @@ class UsersController < ApplicationController
     @markers = MapMarker.new_from_user(@user)
   end
 
-  def update
-  end
-
 end
