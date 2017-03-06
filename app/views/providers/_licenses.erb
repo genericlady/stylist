@@ -1,16 +1,34 @@
 <h1 class="text-center">Licenses</h1>
+<div class="row">
+  <% if @user.licenses.length > 1 %>
+    <% @user.licenses.each do |license| %>
+      <% if license.persisted? %>
+        <div class="col-sm-6">
+          <div class="card mb-3">
+            <div class="card-block">
 
-<div class="card licenses mb-3">
-    <% if @user.licenses.length > 1 %>
-      <% @user.licenses.each do |license| %>
-  <div class="card-block">
-        <p><%= license.type %></p>
-        <p><%= license.full_name %></p>
-        <p><%= license.number %></p>
-        <p><%= license.state %></p>
-  </div>
+              <h4><%= license.license_type %></h4>
+              <p><%= license.full_name %></p>
+              <p><%= license.number %></p>
+              <p><%= license.state %></p>
+
+              <%= link_to "Edit", 
+                edit_user_license_path(@user, license),
+                html_options = { class:"btn btn-warning btn-lg" } %>
+
+              <%= link_to "Delete", 
+                user_license_path(@user, license),
+                :confirm => "Are you sure?",
+                :method => :delete,
+                class: "btn btn-danger btn-lg" %>
+
+            </div>
+          </div>
+        </div>
       <% end %>
-    <% else %>
-      <h3>No Licenses have been added yet</h3>
     <% end %>
+  <% else %>
+    <h3 class="mx-auto">No Licenses have been added yet</h3>
+  <% end %>
+
 </div>
