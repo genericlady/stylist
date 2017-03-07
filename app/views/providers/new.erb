@@ -1,5 +1,8 @@
 <article class="container-fill-height provider-signup">
   <div class="container-content-middle">
+  <% if flash.key? :success %>
+    <div class="alert-success text-center"><%= flash[:success] %></div>
+  <% end %>
 
   <%= render "providers/signup_instructions" %>
   <%= render "providers/identification_upload_form" %>
