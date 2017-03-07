@@ -13,15 +13,13 @@
       </small>
     </div>
 
-    <%= form_for @user, url: provider_path(@user.id) do |user_form| %>
-
-      <%= user_form.fields_for @license do |license_fields| %>
+    <%= form_for [@user, @license] do |license_form| %>
 
         <div class="form-group">
           <div>
-            <%= license_fields.label :type_of_license, class: "mb-0" %>
+            <%= license_form.label :type_of_license, class: "mb-0" %>
           </div>
-          <%= license_fields.
+          <%= license_form.
             text_field :license_type,
             class: "form-control-text",
             id: "license_type",
@@ -30,9 +28,9 @@
 
         <div class="form-group">
           <div>
-          <%= license_fields.label :full_name_on_license, class: "mb-0" %>
+          <%= license_form.label :full_name_on_license, class: "mb-0" %>
           </div>
-          <%= license_fields.
+          <%= license_form.
             text_field :full_name,
             class: "form-control-text",
             id: "fullName",
@@ -41,9 +39,9 @@
 
         <div class="form-group">
           <div>
-          <%= license_fields.label :state_issued, class: "mb-0" %>
+          <%= license_form.label :state_issued, class: "mb-0" %>
           </div>
-          <%= license_fields.
+          <%= license_form.
             text_field :state,
             class: "form-control-text",
             id: "state",
@@ -52,17 +50,16 @@
 
         <div class="form-group">
           <div>
-          <%= license_fields.label :number_of_license, class: "mb-0" %>
+          <%= license_form.label :number_of_license, class: "mb-0" %>
           </div>
-          <%= license_fields.
+          <%= license_form.
             text_field :number,
             class: "form-control-text",
             id: "number",
             aria_describedby: "number" %>
         </div>
 
-      <% end %>
-      <%= user_form.submit value: "Create", class: "btn btn-lg btn-primary" %>
+      <%= license_form.submit value: "Create", class: "btn btn-lg btn-primary" %>
     <% end %>
 
     <div class="card-text">There is a fee associated with this verification service of 5$.
