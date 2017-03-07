@@ -1,14 +1,11 @@
 class ApplicationController < ActionController::Base
   include Pundit
   protect_from_forgery with: :exception
+  after_action :verify_authorized
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
-  def get_user
-    User.find(params[:id])
-  end
-
   def create_user_license
     @user.licenses.create user_license_params[:license]
   end
